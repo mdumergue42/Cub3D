@@ -12,7 +12,12 @@
 	//envoyer de 4 a 5 inclus dans check rgb format
 	//envoyer de 6 a jusqu a la fin dans check map
 
+	// convertir tt les whites spaces en simple espace
+
 	struct typedef s_pars
 	{
 		
 	}	t_pars;
+
+	//faire struct de coor
+	utiliser la ft pour couleur

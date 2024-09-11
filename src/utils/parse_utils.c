@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mess_err.h                                         :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 21:59:56 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/11 14:18:39 by madumerg         ###   ########.fr       */
+/*   Created: 2024/09/11 14:20:54 by madumerg          #+#    #+#             */
+/*   Updated: 2024/09/11 14:31:27 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//for argurments
+#include "cub3d.h"
 
-#define ERR_ARGS "Wrong number of arguments"
-#define ERR_TYPE "Wrong type of file"
-#define EMPTY "Empty file"
+void	convert_white_s(char *str)
+{
+	int	i;
 
-//for map
-
-#define NOT_CLOSE "The map isn't closed"
-#define ERR_PLAYER "Incorrect number of players"
-#define WRONG_CHAR "Invalid character in the map"
-
-//for permission
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 9 && str[i] <= 13)
+			str[i] = 32;
+		i++;
+	}
+}
