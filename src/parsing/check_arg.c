@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 21:33:35 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/07 17:57:29 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/11 11:11:05 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "cub3d.h"
 
 int	check_err_arg(int ac, char **av)
 {

@@ -1,6 +1,6 @@
 NAME = cub3D
 
-CC = cc
+CC = gcc
 
 OBJSDIR = obj/
 
@@ -12,9 +12,7 @@ LIBFT_DIR = libft/
 
 INCLUDE = -I $(I_DIR) -I $(LIBFT_DIR)/$(I_DIR)
 
-SRCS = src/main.c \
-	   src/parsing/check_arg.c \
-	   src/utils/mess_error.c
+SRCS = $(shell find src -name '*.c')
 
 OBJS = $(addprefix $(OBJSDIR), $(SRCS:.c=.o))
 
@@ -22,7 +20,7 @@ FLAGS = -Wall -Werror -Wextra
 LIB = libft/libft.a
 
 $(NAME): $(OBJS)
-	@make -s -C libft
+	@make -sj $(nproc) -C libft
 	@$(CC) $(FLAGS) $(OBJS) $(LIB) -o $(NAME)
 	@echo "✅ Compiled"
 
