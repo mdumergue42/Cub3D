@@ -6,23 +6,89 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:24:13 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/11 15:24:53 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/11 22:14:44 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	err_not_close(char after, char before, char down, char up)
+{
+	if (after == ' ' || after == '\0')
+		return (1);
+	else if (before == ' ' || before == '\0')
+		return (1);
+	else if (down == ' ' || down == '\0')
+		return (1);
+	else if (up == ' ' || up == '\0')
+		return (1);
+	return (0);
+}
+
+int	actual_char(char actual)
+{
+	if (actual == '0' || actual == 'N' || actual == 'W' || \
+		actual == 'S' || actual == 'E')
+		return (0);
+	return (1);
+}
+
+int	check_map_close(char **map)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (actual_char(map[y][x]) == 0 && \
+				(err_not_close(map[y][x + 1], map[y][x - 1], \
+				map[y + 1][x], map[y - 1][x]) == 1))
+				return (1);
+			else
+				x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	count_player(char **map)
+{
+	int	y;
+	int	x;
+	int	cpt;
+
+	cpt = 0;
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'N' || map[y][x] == 'S' || \
+				map[y][x] == 'E' || map[y][x] == 'W')
+				cpt++;
+			x++;
+		}
+		y++;
+	}
+	if (cpt != 1)
+		return (1);
+	return (0);
+}
+
 int	verif_all_map(char **map)
 {
 	if (check_char_map(map) == 1)
 		return (err_mess(WRONG_CHAR));
-	return (0);
-}
-
-int	verif_char(char c)
-{
-	if (c != '1' && c != '0' && c != 'N' && c != 'S' && c != 'W' && c != 'E' && c != ' ')
-		return (1);
+	if (count_player(map) == 1)
+		return (err_mess(ERR_PLAYER));
+	if (check_map_close(map) == 1)
+		return (err_mess(NOT_CLOSE));
 	return (0);
 }
 
@@ -70,5 +136,3 @@ char	**parse_map(char *map)
 	close(fd);
 	return (parse_map);
 }
-
-

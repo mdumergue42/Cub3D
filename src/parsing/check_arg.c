@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 21:33:35 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/11 11:19:25 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/11 22:12:13 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@ int	check_format_file(char *file)
 		return (1);
 	return (0);
 }
-
