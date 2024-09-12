@@ -1,23 +1,6 @@
-	char **map = ft_parse_map(av[1]);
-	int i = 0;
-	while (map[i])
-	{
-		ft_putchar_fd('*', 2);
-		ft_putstr_fd(map[i], 2);
-		ft_putchar_fd('*', 2);
-		ft_putchar_fd('\n', 2);
-		i++;
-	}
-	//envoyer de 0 a 3 inclus dans check id texture
-	//envoyer de 4 a 5 inclus dans check rgb format
-	//envoyer de 6 a jusqu a la fin dans check map
+	// convertir tt les whites spaces en simple espace sur les 6 1ere lignes
 
-	// convertir tt les whites spaces en simple espace //prblm avec les tab
-
-	struct typedef s_pars
-	{
-		
-	}	t_pars;
+	WARNIIIIIINNNNNNNNNNNNNGGG TESTER LES MALLOC A NULL
 
 	//faire struct de coor
 	utiliser la ft pour couleur

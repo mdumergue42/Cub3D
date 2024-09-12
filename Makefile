@@ -16,7 +16,12 @@ MACRO_DIR = MacroLibX/
 
 INCLUDE = -I $(I_DIR) -I $(LIBFT_DIR)/$(I_DIR) -I $(MACRO_DIR)/$(I_DIR)
 
-SRCS = $(shell find src -name '*.c')
+SRCS = src/utils/mess_error.c \
+	   src/utils/parse_utils.c \
+	   src/parsing/check_map.c \
+	   src/parsing/check_arg.c \
+	   src/parsing/principal_pars.c \
+	   src/cub3d.c
 
 OBJS = $(addprefix $(OBJSDIR), $(SRCS:.c=.o))
 

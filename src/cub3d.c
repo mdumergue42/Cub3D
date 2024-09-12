@@ -6,33 +6,36 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/12 11:22:31 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/09/12 16:56:30 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "game.h"
-#include "mlx.h"
+#include "libft.h"
+#include "parsing.h"
+
+t_pars	init_pars(void)
+{
+	t_pars	new;
+
+	new = ft_calloc(sizeof(t_pars));
+	if (!new)
+		return (NULL);
+	new->f_color = 0;
+	new->c_color = 0;
+	new->coor->x = 0;
+	new->coor->y = 0
+	return (new);
+}
 
 int	main(int ac, char **av)
 {
-	//char	**map;
+	t_pars	pars;
 
-	(void)ac;
-	(void)av;
-//	if (check_err_arg(ac, av) == 1)
-//		return (1);
-//	map = parse_map(av[1]);
-//	if (verif_all_map(map) == 1)
-//		return (1);
-	void	*mlx = mlx_init();
-	void	*win = mlx_new_window(mlx, 400, 400, "WTF");
-
-	mlx_on_event(mlx, win, MLX_KEYDOWN, key_hook, mlx);
-
-	mlx_loop(mlx);
-	
-	mlx_destroy_window(mlx, win);
-	mlx_destroy_display(mlx);
+	pars = init_pars(void);
+	if (check_err_arg(ac, av) == 1)
+		return (1);
+	if (verif_info_map(av[1], &pars) == 1)
+		return (1);
 	return (0);
 }
