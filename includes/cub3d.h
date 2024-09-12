@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:05 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/11 14:54:17 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:54:48 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include "parsing.h"
 
-int	check_format_file(char *file);
-int	check_err_arg(int argc, char **argv);
 
-char	**parse_map(char *map);
-int	err_mess(char *str);
-
-int	verif_all_map(char **map);
-int	verif_char(char c);
-int	check_char_map(char **map);
-void	convert_white_s(char *str);
 #endif
