@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/12 11:40:07 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/09/12 17:04:59 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ typedef	struct	s_cub
 {
 	void	*mlx;
 	void	*win;
-	int		(*key_hook)(int, void*);
 	void	*images;
 	char	**map;
 }	t_cub;
@@ -27,6 +26,7 @@ typedef	struct	s_cub
 #define S_KEY 22
 #define A_KEY 4
 #define D_KEY 7
+#define WHITE 0xFFFFFFFF
 
 /**
  *	@brief		This function is used to handle keypress
