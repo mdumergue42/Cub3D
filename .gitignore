@@ -9,5 +9,3 @@ libft/**/*.o
 libft/**/*.a
 src/main.c
 vgcore.*
-Makefile
-src/cub3d.c
