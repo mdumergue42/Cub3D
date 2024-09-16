@@ -6,14 +6,15 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:05 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/12 12:54:48 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/15 20:43:25 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
+# include "ft_printf.h"
 # include "mess_err.h"
 # include <stdlib.h>
 # include <math.h>

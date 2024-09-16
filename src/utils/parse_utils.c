@@ -6,27 +6,50 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:20:54 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/12 16:20:31 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/16 14:55:36 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	space_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	convert_white_s(line);
+	while (line[i])
+	{
+		if (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13))
+			i++;
+		else
+			break ;
+	}
+	if (line[i] != '\0')
+		return (1);
+	return (0);
+}
+
 char	**info_map(char **file)
 {
 	char	**f_part;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
 	f_part = ft_calloc(6, sizeof(char *));
 	if (!f_part)
 		return (NULL);
-	while (i < 6)
+	while (i >= j)
 	{
-		f_part[j] = file[i];
-		j++;
+		if (j == 6)
+			break ;
+		if (space_line(file[i]) == 1)
+		{
+			f_part[j] = file[i];
+			j++;
+		}
 		i++;
 	}
 	return (f_part);
@@ -51,4 +74,19 @@ int	verif_char(char c)
 		c != 'E' && c != ' ')
 		return (1);
 	return (0);
+}
+
+int	count_tab(char **tab)
+{
+	int	i;
+	int	ct;
+
+	i = 0;
+	ct = 0;
+	while (tab[i])
+	{
+		i++;
+		ct++;
+	}
+	return (ct);
 }
