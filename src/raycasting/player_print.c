@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 11:05:02 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/16 18:49:37 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/09/17 10:30:44 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	*get_player_image(t_cub *cub, uint8_t key_pressed)
 	void	*img;
 
 	img = mlx_new_image(cub->mlx, WINDOW_X, WINDOW_Y);
-
 	if (key_pressed == W_KEY)
 		cub->p_coord.y--;
 	else if (key_pressed == S_KEY)

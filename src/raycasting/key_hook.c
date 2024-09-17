@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_handler.c                                    :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:37:56 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/16 18:47:09 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/09/17 10:33:35 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,16 @@ int	key_hook(int key, void *param)
 	cub = (t_cub *)param;
 	(void)cub;
 	if (key == ESCAPE_KEY)
+	{
 		mlx_loop_end(cub->mlx);
-	if (key == W_KEY)
-	{
-		printf("UP\n");
-		mlx_clear_window(cub->mlx, cub->win);
-		mlx_put_image_to_window(cub->mlx, cub->win, get_player_image(cub, key), 0, 0);
+		mlx_destroy_image(cub->mlx, cub->img);
 	}
-	if (key == S_KEY)
+	if (key == W_KEY || key == S_KEY || key == D_KEY || key == A_KEY)
 	{
-		printf("DOWN\n");
 		mlx_clear_window(cub->mlx, cub->win);
-		mlx_put_image_to_window(cub->mlx, cub->win, get_player_image(cub, key), 0, 0);
-	}
-	if (key == D_KEY)
-	{
-		printf("RIGHT\n");
-		mlx_clear_window(cub->mlx, cub->win);
-		mlx_put_image_to_window(cub->mlx, cub->win, get_player_image(cub, key), 0, 0);
-	}
-	if (key == A_KEY)
-	{
-		printf("LEFT\n");
-		mlx_clear_window(cub->mlx, cub->win);
-		mlx_put_image_to_window(cub->mlx, cub->win, get_player_image(cub, key), 0, 0);
+		mlx_destroy_image(cub->mlx, cub->img);
+		cub->img = get_player_image(cub, key);
+		mlx_put_image_to_window(cub->mlx, cub->win, cub->img, 0, 0);
 	}
 	return (0);
 }
