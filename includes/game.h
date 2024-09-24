@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/17 10:47:26 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/09/24 16:50:56 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,24 @@
 
 # include "parsing.h"
 # include <stdint.h>
+# include <math.h>
+# include <stdbool.h>
+# include <unistd.h>
+
+typedef struct s_player
+{
+	t_coord	coords;
+	double	direction;
+}	t_player;
 
 typedef struct s_cub
 {
-	void	*mlx;
-	void	*win;
-	void	*sprites;
-	void	*img;
-	char	**map;
-	t_coord	p_coord;
+	void		*mlx;
+	void		*win;
+	void		*sprites;
+	void		*img;
+	char		**map;
+	t_player	player;
 }	t_cub;
 
 # define ESCAPE_KEY 41
@@ -34,6 +43,9 @@ typedef struct s_cub
 # define WHITE 0xFFFFFFFF
 # define WINDOW_Y 900
 # define WINDOW_X 1600
+# define PLAYER_ROT_SPEED (2 * M_PI) / 8
+# define PLAYER_SPEED 3
+# define MAP_CHUNK_SIZE 64
 
 /**
  *	@brief		This function is used to handle keypress
@@ -52,6 +64,36 @@ int		key_hook(int key, void *param);
  *				thing
  *
  */
-void	*get_player_image(t_cub *cub, uint8_t key_pressed);
+void	get_player_image(t_cub *cub, uint8_t key_pressed);
 
+/**
+ *	@brief		This function is here to change the direction of the player
+ *				by setting the t_player->direction and check overflow to be
+ *				sure it stays between 0 and 2pi because it is expressed in
+ *				radians
+ *				
+ *	@param speed		The speed a which the player rotate
+ *	@param clockwise	The direction which the player rotate
+ *	@param player		A pointer to a t_player struct
+ *
+ */
+void	change_direction(double speed, bool clockwise, t_player *player);
+
+/**
+ *	@brief		Function used to draw a square
+ *
+ *	@param cub		The adress of a t_cub struct
+ *	@param coord	The coordinate of the printed square
+ *	@param size		The size of the printed square
+ *	@param color	The color of the printed square
+ *
+ */
+void	draw_square(t_cub *cub, t_coord coord, uint16_t size, int color);
+
+/**
+ *	@brief		Function used to draw the map
+ *
+ *	@param cub	The address of the t_cub struct
+ */
+void	print_map(t_cub *cub);
 #endif

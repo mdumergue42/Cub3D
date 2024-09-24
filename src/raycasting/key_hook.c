@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:37:56 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/17 10:33:35 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/09/23 14:41:31 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	key_hook(int key, void *param)
 	{
 		mlx_clear_window(cub->mlx, cub->win);
 		mlx_destroy_image(cub->mlx, cub->img);
-		cub->img = get_player_image(cub, key);
+		cub->img = mlx_new_image(cub->mlx, 600, 600);
+		get_player_image(cub, key);
 		mlx_put_image_to_window(cub->mlx, cub->win, cub->img, 0, 0);
 	}
 	return (0);

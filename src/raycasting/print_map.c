@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_print.c                                     :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 11:05:02 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/17 10:30:44 by adjoly           ###   ########.fr       */
+/*   Created: 2024/09/23 14:09:17 by adjoly            #+#    #+#             */
+/*   Updated: 2024/09/23 14:41:51 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-#include <stdint.h>
 #include "mlx.h"
+#include <stdio.h>
 
-void	*get_player_image(t_cub *cub, uint8_t key_pressed)
+void	print_map(t_cub *cub)
 {
-	void	*img;
+	size_t	i;
+	size_t	j;
 
-	img = mlx_new_image(cub->mlx, WINDOW_X, WINDOW_Y);
-	if (key_pressed == W_KEY)
-		cub->p_coord.y--;
-	else if (key_pressed == S_KEY)
-		cub->p_coord.y++;
-	else if (key_pressed == D_KEY)
-		cub->p_coord.x++;
-	else if (key_pressed == A_KEY)
-		cub->p_coord.x--;
-	mlx_set_image_pixel(cub->mlx, img, cub->p_coord.x, cub->p_coord.y, WHITE);
-	return (img);
+	i = 0;
+	while (cub->map[i])
+	{
+		j = 0;
+		while (cub->map[i][j])
+		{
+			if (cub->map[i][j] == '1')
+			{
+				draw_square(cub, (t_coord){j * MAP_CHUNK_SIZE, i * MAP_CHUNK_SIZE}, MAP_CHUNK_SIZE, WHITE);
+			}
+			j++;
+		}
+		i++;
+	}
 }

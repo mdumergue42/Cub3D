@@ -20,15 +20,15 @@ SRCS = $(shell find src -name *.c)
 
 OBJS = $(addprefix $(OBJSDIR), $(SRCS:.c=.o))
 
-FLAGS = -Wall -Werror -Wextra -g -lm -lSDL2
+FLAGS = -Wall -Werror -Wextra -g -lm -lSDL2 -MMD -MP
 
 LIB = libft/libft.a \
 	  MacroLibX/libmlx.so
 
 $(NAME): $(OBJS)
-	@make -sj $(nproc) -C $(LIBFT_DIR)
+	@make -sj -C $(LIBFT_DIR)
 	@echo "✅ Libft compiled"
-	@make -sj $(nproc) -C $(MACRO_DIR) > /dev/null
+	@make -sj -C $(MACRO_DIR)
 	@echo "✅ MacroLibX compiled"
 	@$(CC) $(FLAGS) $(OBJS) $(LIB) -o $(NAME)
 	@echo "✅ Compiled"
@@ -40,14 +40,14 @@ $(OBJSDIR)%.o: %.c
 all: $(NAME)
 
 clean:
-	@make -s -C $(LIBFT_DIR) clean
-	@make -s -C $(MACRO_DIR) clean > /dev/null
+	@make -sC $(LIBFT_DIR) clean
+	@make -sC $(MACRO_DIR) clean > /dev/null
 	@rm -f $(OBJS)
 
 fclean: clean
-	@make -s -C $(LIBFT_DIR) fclean
+	@make -sC $(LIBFT_DIR) fclean
 	@echo "🧹 Libft Cleaned"
-	@make -s -C $(MACRO_DIR) fclean > /dev/null
+	@make -sC $(MACRO_DIR) fclean > /dev/null
 	@echo "🧹 MacroLibX Cleaned"
 	@rm -f $(NAME)
 	@rm -Rf $(OBJSDIR)
