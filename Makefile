@@ -30,7 +30,7 @@ $(NAME): $(OBJS)
 	@echo "✅ Libft compiled"
 	@make -sj -C $(MACRO_DIR)
 	@echo "✅ MacroLibX compiled"
-	@$(CC) $(FLAGS) $(OBJS) $(LIB) -o $(NAME)
+	@$(CC) $(OBJS) $(LIB) -o $(NAME) $(FLAGS)
 	@echo "✅ Compiled"
 
 $(OBJSDIR)%.o: %.c
