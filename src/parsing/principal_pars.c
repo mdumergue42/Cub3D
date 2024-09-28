@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:44:52 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/16 14:58:26 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/28 20:40:30 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	all_data_verif(char **tab, t_pars *pars)
 {
 	if (detect_info(tab, pars) == 1)
+	{
+		free_tab(tab);
 		return (1);
+	}
 	return (0);
 }
 
@@ -31,10 +34,13 @@ int	check_info(char **l, t_pars *pars)
 	while (l[i])
 	{
 		tab = ft_split(l[i], ' ');
+		if (tab == NULL)
+			return (1);
 		if (all_data_verif(tab, pars) == 1)
 			return (1);
 		i++;
 	}
+	free_tab(tab);
 	return (0);
 }
 
@@ -43,49 +49,67 @@ int	verif_info_file(char *av, t_pars *pars)
 	char	**map;
 	char	**f_part;
 
-	(void)pars;
-	map = parse_map(av);
+	map = parse_file(av, 0, 1);
+	if (map == NULL)
+		return (err_mess(CRASH));
 	f_part = info_map(map);
-	if (check_info(f_part, pars) == 1)
+	if (f_part == NULL)
+	{
+		free_tab(map);
+		return (err_mess(CRASH));
+	}
+	if (check_info(f_part, pars) == 1 || check_dup_img(pars) == 1 || \
+		check_dup_color(pars) == 1)
+	{
+		free_tab(map);
 		return (1);
-//	if (check_dup_img(pars) == 1)
-//		return (1);
-//	if (verif_all_map(map) == 1)
-//		return (1);
+	}
+	if (all_skip(map, pars) == 1)
+		return (1);
 	return (0);
 }
 
-int	verif_all_map(char **map)
+int	verif_all_map(char **map, t_pars *pars)
 {
-	if (check_char_map(map) == 1)
+	pars->map = alloc_map(map, longest_line(map));
+	free_tab(map);
+	if (pars->map == NULL)
+		return (err_mess(CRASH));
+	if (check_char_map(pars->map) == 1)
 		return (err_mess(WRONG_CHAR));
-	if (count_player(map) == 1)
+	if (count_player(pars->map, pars, 0) == 1)
 		return (err_mess(ERR_PLAYER));
-	if (check_map_close(map) == 1)
+	if (check_map_close(pars->map) == 1)
 		return (err_mess(NOT_CLOSE));
+	pars->coor.x = search_letter(pars->map, 0, pars->l_player);
+	pars->coor.y = search_letter(pars->map, 1, pars->l_player);
 	return (0);
 }
 
-char	**parse_map(char *map)
+char	**parse_file(char *map, int ct, int i)
 {
 	int		fd;
 	char	**parse_map;
-	char	*save;
-	char	*join;
 
 	fd = open(map, O_RDONLY);
-	save = get_next_line(fd);
-	join = ft_calloc(1, 1);
-	if (!join)
+	if (fd < 0)
 		return (NULL);
-	while (save != NULL)
+	ct = count_line_file(fd);
+	fd = open(map, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
+	parse_map = ft_calloc(sizeof(char *), ct + 1);
+	if (!parse_map)
 	{
-		join = ft_strjoin(join, save);
-		free(save);
-		save = get_next_line(fd);
+		close(fd);
+		return (NULL);
 	}
-	parse_map = ft_split(join, '\n');
-	free(join);
-	close(fd);
+	parse_map[0] = get_next_line(fd);
+	while (i <= ct)
+	{
+		parse_map[i] = get_next_line(fd);
+		i++;
+	}
+	close (fd);
 	return (parse_map);
 }

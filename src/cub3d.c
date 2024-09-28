@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/16 13:54:52 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/28 20:12:50 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ t_pars	init_pars(void)
 {
 	t_pars	new;
 
-	new.f_color = 0;
-	new.c_color = 0;
+	new.f_color = -1;
+	new.c_color = -1;
+	new.color = 0;
+	new.l_player = 0;
 	new.coor.x = 0;
 	new.coor.y = 0;
 	new.no_png = NULL;
@@ -27,14 +29,34 @@ t_pars	init_pars(void)
 	return (new);
 }
 
+int	basics_check(int ac, char **av, t_pars *pars)
+{
+	if (check_err_arg(ac, av) == 1)
+		return (1);
+	if (verif_info_file(av[1], pars) == 1)
+		return (1);
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_pars	pars;
+	int		i;
 
+	i = 0;
 	pars = init_pars();
-	if (check_err_arg(ac, av) == 1)
+	if (basics_check(ac, av, &pars) == 1)
 		return (1);
-	if (verif_info_file(av[1], &pars) == 1)
-		printf("main\n");
+	printf ("f color %d\n", pars.f_color);
+	printf ("c color %d\n", pars.c_color);
+	printf ("x = %d\n", pars.coor.x);
+	printf ("y = %d\n", pars.coor.y);
+	printf ("no_png --> %s\n", pars.no_png);
+	printf ("so_png --> %s\n", pars.so_png);
+	printf ("we_png --> %s\n", pars.we_png);
+	printf ("ea_png --> %s\n", pars.ea_png);
+	while (pars.map[i])
+		printf("|%s|\n", pars.map[i++]);
+	free_pars(&pars);
 	return (0);
 }

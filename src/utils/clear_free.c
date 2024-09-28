@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   clear_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 17:01:05 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 15:55:04 by madumerg         ###   ########.fr       */
+/*   Created: 2024/09/28 17:37:10 by madumerg          #+#    #+#             */
+/*   Updated: 2024/09/28 17:43:25 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include "libft.h"
-# include "ft_printf.h"
-# include "mess_err.h"
-# include <stdlib.h>
-# include <math.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include "parsing.h"
+void	free_tab(char **tab)
+{
+	char	**tmp;
 
-#endif
+	tmp = tab;
+	while (tmp && *tmp)
+	{
+		free(*tmp);
+		tmp++;
+	}
+	free(tab);
+	tab = NULL;
+}
+
+void	free_pars(t_pars *pars)
+{
+	if (pars->no_png)
+		free(pars->no_png);
+	if (pars->so_png)
+		free(pars->so_png);
+	if (pars->we_png)
+		free(pars->we_png);
+	if (pars->ea_png)
+		free(pars->ea_png);
+	if (pars->map)
+		free_tab(pars->map);
+}

@@ -1,17 +1,20 @@
-NO ./no_texture.png
-SO ./so_texture.png
-WE ./we_texture.png
-EA ./ea_texture.png
-F	 220       ,      100,        0
-C								 225,		 30, 0
 
-11111
-1001S1  
-11111
-11111
-11111
-11101
-11111
-   111
-   101
-   111
+
+
+
+
+
+
+
+
+NO ./no_texture.png
+ SO ./so_texture.png
+WE	./we_texture.png							 
+EA ./ea_texture.png
+C 7,4,4
+
+ F 7,4,40
+
+111111
+1000W1
+111111
