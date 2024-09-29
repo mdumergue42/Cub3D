@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:24:13 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 15:48:38 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:37:16 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	err_not_close(char after, char before, char down, char up)
 {

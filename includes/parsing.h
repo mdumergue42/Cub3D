@@ -6,12 +6,19 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:49:16 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 17:54:07 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:32:01 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
+
+# include "libft.h"
+# include "ft_printf.h"
+# include "mess_err.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 typedef struct s_coord
 {
@@ -73,7 +80,7 @@ char	**parse_file(char *map, int ct, int i);
 int		err_mess(char *str);
 
 //parse_utils.c
-char	**info_map(char **file);
+void	info_map(char **file, char ***f_part);
 int		verif_char(char c);
 int		space_line(char *line);
 

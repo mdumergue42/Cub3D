@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 20:12:50 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:36:29 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_pars	init_pars(void)
 	new.so_png = NULL;
 	new.we_png = NULL;
 	new.ea_png = NULL;
+	new.map = NULL;
 	return (new);
 }
 
@@ -41,22 +42,13 @@ int	basics_check(int ac, char **av, t_pars *pars)
 int	main(int ac, char **av)
 {
 	t_pars	pars;
-	int		i;
 
-	i = 0;
 	pars = init_pars();
 	if (basics_check(ac, av, &pars) == 1)
+	{
+		free_pars(&pars);
 		return (1);
-	printf ("f color %d\n", pars.f_color);
-	printf ("c color %d\n", pars.c_color);
-	printf ("x = %d\n", pars.coor.x);
-	printf ("y = %d\n", pars.coor.y);
-	printf ("no_png --> %s\n", pars.no_png);
-	printf ("so_png --> %s\n", pars.so_png);
-	printf ("we_png --> %s\n", pars.we_png);
-	printf ("ea_png --> %s\n", pars.ea_png);
-	while (pars.map[i])
-		printf("|%s|\n", pars.map[i++]);
+	}
 	free_pars(&pars);
 	return (0);
 }

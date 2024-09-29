@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:12:28 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 20:44:38 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:35:50 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	ft_count_line_map(char **file, int y)
 {
@@ -34,21 +34,15 @@ void	replace_nl(char *l)
 
 int	recup_map(char **old_map, int i, t_pars *pars)
 {
-	char	**tmp;
-	int		j;
+	int	k;
 
-	j = 0;
-	tmp = ft_calloc(sizeof(char *), ft_count_line_map(old_map, i));
-	if (!tmp)
-		return (err_mess(CRASH));
+	k = i;
 	while (old_map[i])
 	{
 		replace_nl(old_map[i]);
-		tmp[j] = old_map[i];
-		j++;
 		i++;
 	}
-	if (verif_all_map(tmp, pars) == 1)
+	if (verif_all_map(&old_map[k], pars) == 1)
 		return (1);
 	return (0);
 }

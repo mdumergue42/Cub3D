@@ -4,17 +4,37 @@
 
 
 
+NO ./no_texture.png            
 
+			
+SO ./so_texture.png
 
-
-NO ./no_texture.png
- SO ./so_texture.png
-WE	./we_texture.png							 
+WE ./we_texture.png							 
 EA ./ea_texture.png
-C 7,4,4
+C 72,48,4
+F 7,4,46
 
- F 7,4,40
 
 111111
 1000W1
-111111
+1111111
+
+
+                           
+   
+11111111111111
+       11
+    1110111
+1111111111111111
+
+
+
+    111111111111111
+111111111111111111111111
+
+
+
+
+
+
+

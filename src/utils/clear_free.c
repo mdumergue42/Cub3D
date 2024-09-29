@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:37:10 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 17:43:25 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:34:58 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 void	free_tab(char **tab)
 {

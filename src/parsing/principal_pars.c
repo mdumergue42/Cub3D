@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:44:52 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 20:40:30 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:37:58 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	all_data_verif(char **tab, t_pars *pars)
 {
@@ -22,57 +22,51 @@ int	all_data_verif(char **tab, t_pars *pars)
 	return (0);
 }
 
-int	check_info(char **l, t_pars *pars)
+int	check_info(char **file, t_pars *pars)
 {
 	char	**tab;
 	int		i;
+	int		ct;
 
+	ct = 0;
 	i = 0;
-	tab = ft_calloc(sizeof(char *), 6);
-	if (!tab)
-		return (1);
-	while (l[i])
+	while (file[i])
 	{
-		tab = ft_split(l[i], ' ');
-		if (tab == NULL)
-			return (1);
-		if (all_data_verif(tab, pars) == 1)
-			return (1);
+		if (ct == 6)
+			break ;
+		if (space_line(file[i]) == 1)
+		{
+			ct++;
+			tab = ft_split(file[i], ' ');
+			if (tab == NULL || all_data_verif(tab, pars) == 1)
+				return (1);
+			free_tab(tab);
+		}
 		i++;
 	}
-	free_tab(tab);
 	return (0);
 }
 
 int	verif_info_file(char *av, t_pars *pars)
 {
 	char	**map;
-	char	**f_part;
 
 	map = parse_file(av, 0, 1);
 	if (map == NULL)
 		return (err_mess(CRASH));
-	f_part = info_map(map);
-	if (f_part == NULL)
-	{
-		free_tab(map);
-		return (err_mess(CRASH));
-	}
-	if (check_info(f_part, pars) == 1 || check_dup_img(pars) == 1 || \
-		check_dup_color(pars) == 1)
+	if (check_info(map, pars) == 1 || check_dup_img(pars) == 1 || \
+		check_dup_color(pars) == 1 || all_skip(map, pars) == 1)
 	{
 		free_tab(map);
 		return (1);
 	}
-	if (all_skip(map, pars) == 1)
-		return (1);
+	free_tab(map);
 	return (0);
 }
 
 int	verif_all_map(char **map, t_pars *pars)
 {
 	pars->map = alloc_map(map, longest_line(map));
-	free_tab(map);
 	if (pars->map == NULL)
 		return (err_mess(CRASH));
 	if (check_char_map(pars->map) == 1)

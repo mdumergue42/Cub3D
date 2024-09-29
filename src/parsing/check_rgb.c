@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 09:36:07 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 17:08:01 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:37:25 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	check_nb_color(char *r, char *g, char *b)
 {
@@ -20,14 +20,12 @@ int	check_nb_color(char *r, char *g, char *b)
 	return (0);
 }
 
-int	save_color(char *tab, t_pars *pars, int j)
+int	save_color(char *tab, t_pars *pars, int j, int i)
 {
 	char	*r;
 	char	*g;
 	char	*b;
-	int		i;
 
-	i = 0;
 	while (tab[i] != ',')
 		i++;
 	r = ft_strndup_color(tab, 0, i);
@@ -44,6 +42,9 @@ int	save_color(char *tab, t_pars *pars, int j)
 	if (check_nb_color(r, g, b) == -1)
 		return (-1);
 	pars->color = create_argb(ft_atoi(r), ft_atoi(g), ft_atoi(b));
+	free(r);
+	free(g);
+	free(b);
 	return (0);
 }
 
@@ -73,7 +74,7 @@ int	check_format_rgb(char *sign, char **tab, t_pars *pars)
 		return (err_mess(INVALID_CHAR));
 	if (count_precise_char(tab[1], ',') == 1)
 		return (err_mess(WRONG_F_RGB));
-	if (save_color(tab[1], pars, 0) == -1)
+	if (save_color(tab[1], pars, 0, 0) == -1)
 		return (err_mess(ERR_COLOR));
 	if (ft_strcmp(sign, "F") == 0)
 		pars->f_color = pars->color;

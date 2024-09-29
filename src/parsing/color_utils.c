@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 19:44:37 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 17:32:06 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:37:35 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	check_dup_color(t_pars *pars)
 {

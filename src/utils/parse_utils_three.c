@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 15:40:12 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 17:32:55 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:35:35 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 char	*fill_line(char *l, int size)
 {
@@ -56,7 +56,10 @@ char	**alloc_map(char **old_map, int size)
 	{
 		tmp[i] = fill_line(old_map[j], size);
 		if (tmp[i] == NULL)
+		{
+			free_tab(tmp);
 			return (NULL);
+		}
 		i++;
 		j++;
 	}

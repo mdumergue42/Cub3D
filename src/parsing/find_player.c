@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:57:11 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/19 09:55:38 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:37:45 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	search_letter(char **map, int i, char l)
 {

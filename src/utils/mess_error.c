@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 17:35:14 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/11 11:10:48 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/09/29 20:35:10 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	err_mess(char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 10:44:07 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 20:14:47 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:37:04 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	check_dup_img(t_pars *pars)
 {
@@ -30,14 +30,14 @@ int	assign_img_two(char *sign, char *path, t_pars *pars)
 	if (ft_strcmp("WE", sign) == 0)
 	{
 		if (pars->we_png == NULL)
-			pars->we_png = path;
+			pars->we_png = ft_strdup(path);
 		else
 			return (err_mess(DUP_ACR));
 	}
 	else if (ft_strcmp("EA", sign) == 0)
 	{
 		if (pars->ea_png == NULL)
-			pars->ea_png = path;
+			pars->ea_png = ft_strdup(path);
 		else
 			return (err_mess(DUP_ACR));
 	}
@@ -49,14 +49,14 @@ int	assign_img(char *sign, char *path, t_pars *pars)
 	if (ft_strcmp("NO", sign) == 0)
 	{
 		if (pars->no_png == NULL)
-			pars->no_png = path;
+			pars->no_png = ft_strdup(path);
 		else
 			return (err_mess(DUP_ACR));
 	}
 	else if (ft_strcmp("SO", sign) == 0)
 	{
 		if (pars->so_png == NULL)
-			pars->so_png = path;
+			pars->so_png = ft_strdup(path);
 		else
 			return (err_mess(DUP_ACR));
 	}

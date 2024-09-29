@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 09:57:13 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/28 14:55:56 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:36:00 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	count_tab(char **tab)
 {
