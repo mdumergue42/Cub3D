@@ -6,24 +6,15 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 19:44:37 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 20:37:35 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/05 17:52:43 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	check_dup_color(t_pars *pars)
-{
-	if (pars->c_color < 0 || pars->f_color < 0)
-		return (err_mess(NOT_FOUND));
-	if (pars->c_color == pars->f_color)
-		return (err_mess(DUP_COLOR));
-	return (0);
-}
-
 int	create_argb(int r, int g, int b)
 {
-	return (r << 16 | g << 8 | b);
+	return (255 << 24 | r << 16 | g << 8 | b);
 }
 
 char	*ft_strndup_color(char *src, int start, int end)

@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 09:36:07 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 20:37:25 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:10:09 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,13 @@ int	count_precise_char(char *str, char c)
 
 int	check_format_rgb(char *sign, char **tab, t_pars *pars)
 {
+	static int	ct_f;
+	static int	ct_c;
+
+	if (ft_strcmp(sign, "F") == 0)
+		ct_f++;
+	if (ft_strcmp(sign, "C") == 0)
+		ct_c++;
 	if (count_tab(tab) > 2)
 		return (err_mess(NOT_FOUND));
 	if (check_char_color(tab[1]) == 1)
@@ -76,9 +83,11 @@ int	check_format_rgb(char *sign, char **tab, t_pars *pars)
 		return (err_mess(WRONG_F_RGB));
 	if (save_color(tab[1], pars, 0, 0) == -1)
 		return (err_mess(ERR_COLOR));
+	if (ct_f > 1 || ct_c > 1)
+		return (err_mess(DUP_ACR));
 	if (ft_strcmp(sign, "F") == 0)
 		pars->f_color = pars->color;
-	else if (ft_strcmp(sign, "C") == 0)
+	if (ft_strcmp(sign, "C") == 0)
 		pars->c_color = pars->color;
 	return (0);
 }

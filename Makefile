@@ -30,6 +30,7 @@ SRCS = src/utils/mess_error.c \
 	   src/parsing/color_utils.c \
 	   src/parsing/find_player.c \
 	   src/parsing/principal_pars.c \
+	   src/parsing/start.c \
 	   src/cub3d.c
 
 OBJS = $(addprefix $(OBJSDIR), $(SRCS:.c=.o))
@@ -42,9 +43,9 @@ LIB = libft/libft.a \
 $(NAME): $(OBJS)
 	@make -sj $(nproc) -C $(LIBFT_DIR)
 	@echo "✅ Libft compiled"
-	@make -sj $(nproc) -C $(MACRO_DIR) > /dev/null
+	@make -sj $(nproc) -C $(MACRO_DIR)
 	@echo "✅ MacroLibX compiled"
-	@$(CC) $(FLAGS) $(OBJS) $(LIB) -o $(NAME)
+	@$(CC) $(OBJS) $(LIB) -o $(NAME) $(FLAGS)
 	@echo "✅ Compiled"
 
 $(OBJSDIR)%.o: %.c

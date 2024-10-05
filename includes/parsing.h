@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:49:16 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 20:32:01 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:43:16 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ typedef struct s_pars
 	char	**map;
 }	t_pars;
 
-//check_arg.c
+//start.c
+t_pars	init_pars(void);
+int		basics_check(int ac, char **av, t_pars *pars);
+
+	//check_arg.c
 int		check_err_arg(int ac, char **av);
 int		check_format_file(char *file);
 
@@ -49,7 +53,6 @@ int		detect_info(char **tab, t_pars *pars);
 
 //check_image.c
 int		assign_img(char *sign, char *path, t_pars *pars);
-int		check_dup_img(t_pars *pars);
 int		check_texture(char *sign, char *path, t_pars *pars);
 
 //check_map.c
@@ -65,7 +68,6 @@ int		check_format_rgb(char *sign, char **tab, t_pars *pars);
 int		create_argb(int r, int g, int b);
 char	*ft_strndup_color(char *src, int start, int end);
 int		check_char_color(char *tab);
-int		check_dup_color(t_pars *pars);
 
 //find_player.c
 int		search_letter(char **map, int i, char l);

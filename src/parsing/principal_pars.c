@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:44:52 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 20:37:58 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:35:52 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ int	check_info(char **file, t_pars *pars)
 		}
 		i++;
 	}
+	if (pars->f_color == 0 || pars->c_color == 0 || pars->ea_png == NULL || \
+		pars->no_png == NULL || pars->so_png == NULL || pars->we_png == NULL)
+		return (err_mess(NOT_FOUND));
 	return (0);
 }
 
@@ -54,8 +57,7 @@ int	verif_info_file(char *av, t_pars *pars)
 	map = parse_file(av, 0, 1);
 	if (map == NULL)
 		return (err_mess(CRASH));
-	if (check_info(map, pars) == 1 || check_dup_img(pars) == 1 || \
-		check_dup_color(pars) == 1 || all_skip(map, pars) == 1)
+	if (check_info(map, pars) == 1 || all_skip(map, pars) == 1)
 	{
 		free_tab(map);
 		return (1);
@@ -66,6 +68,8 @@ int	verif_info_file(char *av, t_pars *pars)
 
 int	verif_all_map(char **map, t_pars *pars)
 {
+	if (longest_line(map) == 1)
+		return (1);
 	pars->map = alloc_map(map, longest_line(map));
 	if (pars->map == NULL)
 		return (err_mess(CRASH));

@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 09:57:13 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 20:36:00 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:33:01 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	longest_line(char **line)
 	int	actual;
 
 	stock = ft_strlen(line[0]);
+	if (stock == 0)
+		return (err_mess(MISS_MAP));
 	i = 1;
 	actual = 0;
 	while (line[i])

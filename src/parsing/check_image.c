@@ -6,24 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 10:44:07 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 20:37:04 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:39:06 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-int	check_dup_img(t_pars *pars)
-{
-	if (!pars->no_png || !pars->so_png || !pars->we_png || !pars->ea_png)
-		return (err_mess(NOT_FOUND));
-	if (ft_strcmp(pars->no_png, pars->so_png) == 0 || \
-		ft_strcmp(pars->no_png, pars->we_png) == 0 || \
-		ft_strcmp(pars->no_png, pars->ea_png) == 0 || \
-		ft_strcmp(pars->so_png, pars->we_png) == 0 || \
-		ft_strcmp(pars->we_png, pars->ea_png) == 0)
-		return (err_mess(DUP_IMG));
-	return (0);
-}
 
 int	assign_img_two(char *sign, char *path, t_pars *pars)
 {
