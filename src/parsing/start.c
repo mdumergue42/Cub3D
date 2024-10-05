@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 14:20:54 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 20:35:22 by madumerg         ###   ########.fr       */
+/*   Created: 2024/10/05 18:42:05 by madumerg          #+#    #+#             */
+/*   Updated: 2024/10/05 18:44:40 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	space_line(char *line)
+t_pars	init_pars(void)
 {
-	int	i;
+	t_pars	new;
 
-	i = 0;
-	convert_white_s(line);
-	while (line[i])
-	{
-		if (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13))
-			i++;
-		else
-			break ;
-	}
-	if (line[i] != '\0')
-		return (1);
-	return (0);
+	new.f_color = -1;
+	new.c_color = -1;
+	new.color = 0;
+	new.l_player = 0;
+	new.coor.x = 0;
+	new.coor.y = 0;
+	new.no_png = NULL;
+	new.so_png = NULL;
+	new.we_png = NULL;
+	new.ea_png = NULL;
+	new.map = NULL;
+	return (new);
 }
 
-int	verif_char(char c)
+int	basics_check(int ac, char **av, t_pars *pars)
 {
-	if (c != '1' && c != '0' && c != 'N' && c != 'S' && c != 'W' && \
-		c != 'E' && c != ' ')
+	if (check_err_arg(ac, av) == 1)
+		return (1);
+	if (verif_info_file(av[1], pars) == 1)
 		return (1);
 	return (0);
 }

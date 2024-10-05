@@ -6,11 +6,11 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 21:33:35 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/12 12:57:41 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/05 15:39:53 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	check_err_arg(int ac, char **av)
 {
@@ -24,10 +24,7 @@ int	check_err_arg(int ac, char **av)
 		return (err_mess(ERR_TYPE));
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
-	{
-		close(fd);
 		return (err_mess(EMPTY));
-	}
 	rd = read(fd, buf, 10);
 	close(fd);
 	return (rd);

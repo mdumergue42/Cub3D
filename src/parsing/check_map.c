@@ -6,21 +6,21 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:24:13 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/12 12:57:24 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:37:16 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	err_not_close(char after, char before, char down, char up)
 {
-	if (after == ' ' || after == '\0')
+	if (after == ' ' || after == '\0' || after == '\n')
 		return (1);
-	else if (before == ' ' || before == '\0')
+	else if (before == ' ' || before == '\0' || before == '\n')
 		return (1);
-	else if (down == ' ' || down == '\0')
+	else if (down == ' ' || down == '\0' || down == '\n')
 		return (1);
-	else if (up == ' ' || up == '\0')
+	else if (up == ' ' || up == '\0' || up == '\n')
 		return (1);
 	return (0);
 }
@@ -39,6 +39,8 @@ int	check_map_close(char **map)
 	int	x;
 
 	y = 0;
+	if (last_first_line(map) == 1)
+		return (1);
 	while (map[y])
 	{
 		x = 0;
@@ -53,31 +55,6 @@ int	check_map_close(char **map)
 		}
 		y++;
 	}
-	return (0);
-}
-
-int	count_player(char **map)
-{
-	int	y;
-	int	x;
-	int	cpt;
-
-	cpt = 0;
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == 'N' || map[y][x] == 'S' || \
-				map[y][x] == 'E' || map[y][x] == 'W')
-				cpt++;
-			x++;
-		}
-		y++;
-	}
-	if (cpt != 1)
-		return (1);
 	return (0);
 }
 

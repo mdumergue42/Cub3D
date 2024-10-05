@@ -12,6 +12,33 @@
 
 #include "../includes/libft.h"
 
+char	*ft_strjoin_gnl(char *s1, char *s2)
+{
+	size_t	len;
+	size_t	i;
+	size_t	j;
+	char	*str;
+
+	if (!s2)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j] != '\0')
+		str[i++] = s2[j++];
+	free(s1);
+	str[i] = '\0';
+	return (str);
+}
+
 char	ft_end_of_line(char *line, char *buffer)
 {
 	int	i;
@@ -60,7 +87,7 @@ char	*get_next_line(int fd)
 		buffer = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
 	while (buffer && line)
 	{
-		line = ft_strjoin(line, buffer);
+		line = ft_strjoin_gnl(line, buffer);
 		if (!line)
 			return (NULL);
 		if (ft_end_of_line(line, buffer) == 1)
