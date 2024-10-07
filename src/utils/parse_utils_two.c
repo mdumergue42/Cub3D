@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:12:28 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 20:35:50 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/07 11:47:14 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,20 @@ int	ft_count_line_map(char **file, int y)
 	return (y);
 }
 
-void	replace_nl(char *l)
+int	replace_nl(char *l)
 {
 	int	i;
 
 	i = 0;
 	while (l[i])
 	{
+		if (l[0] == '\n')
+			return (err_mess(WRONG_CHAR));
 		if (l[i] == '\n')
 			l[i] = '\0';
 		i++;
 	}
+	return (0);
 }
 
 int	recup_map(char **old_map, int i, t_pars *pars)
@@ -37,11 +40,6 @@ int	recup_map(char **old_map, int i, t_pars *pars)
 	int	k;
 
 	k = i;
-	while (old_map[i])
-	{
-		replace_nl(old_map[i]);
-		i++;
-	}
 	if (verif_all_map(&old_map[k], pars) == 1)
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:24:13 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 20:37:16 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/07 11:45:16 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,37 @@ int	check_map_close(char **map)
 	return (0);
 }
 
+int	last_no_null_line(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[j])
+	{
+		if (space_line(map[j]) == 1)
+			i = j;
+		j++;
+	}
+	return (i);
+}
+
 int	check_char_map(char **map)
 {
 	int	y;
 	int	x;
+	int	l;
 
 	y = 0;
+	l = last_no_null_line(map);
 	while (map[y])
 	{
 		x = 0;
+		if (y == l)
+			break ;
+		if (space_line(map[y]) == 0)
+			return (1);
 		while (map[y][x])
 		{
 			if (verif_char(map[y][x]) == 1)
