@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/07 16:02:18 by adjoly            #+#    #+#              #
+#    Updated: 2024/10/07 16:02:44 by adjoly           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SHELL = bash
 
 NAME = cub3D
@@ -28,8 +40,8 @@ LIB = libft/libft.a \
 $(NAME): $(OBJS)
 	@make -sj -C $(LIBFT_DIR)
 	@echo "✅ Libft compiled"
-	@make -sj -C $(MACRO_DIR)
-	@echo "✅ MacroLibX compiled"
+	@#@make -sj -C $(MACRO_DIR)
+	@#@echo "✅ MacroLibX compiled"
 	@$(CC) $(OBJS) $(LIB) -o $(NAME) $(FLAGS)
 	@echo "✅ Compiled"
 
@@ -41,14 +53,14 @@ all: $(NAME)
 
 clean:
 	@make -sC $(LIBFT_DIR) clean
-	@make -sC $(MACRO_DIR) clean > /dev/null
+	@#@make -sC $(MACRO_DIR) clean > /dev/null
 	@rm -f $(OBJS)
 
 fclean: clean
 	@make -sC $(LIBFT_DIR) fclean
 	@echo "🧹 Libft Cleaned"
-	@make -sC $(MACRO_DIR) fclean > /dev/null
-	@echo "🧹 MacroLibX Cleaned"
+	@#@make -sC $(MACRO_DIR) fclean > /dev/null
+	@#@echo "🧹 MacroLibX Cleaned"
 	@rm -f $(NAME)
 	@rm -Rf $(OBJSDIR)
 	@echo "🧹 Cleaned"

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dda_while.c                                        :+:      :+:    :+:   */
+/*   while_dda.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 18:46:56 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/06 19:05:11 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/07 17:08:57 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game/game.h"
+#include "game/dda.h"
 
-void	dda_while(t_dda *dda, char **map, t_coord map_coord)
+void	while_dda(t_dda (*dda)[800], char **map, t_coord map_coord)
 {
 	dda->wall_hit = false;
 	while (!dda->wall_hit)

@@ -6,11 +6,14 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:26:29 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/06 17:58:04 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/07 19:06:47 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game/game.h"
+#include "game/dda.h"
+#include "game/settings.h"
+#include <math.h>
+#include <stdint.h>
 
 void	get_ray_angle(t_player *player, t_dda (*dda)[800])
 {
