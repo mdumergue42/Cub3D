@@ -6,55 +6,24 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/29 16:47:32 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/06 18:48:33 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
+# include "dda.h"
+# include "settings.h"
 # include "parsing.h"
+# include "typedef.h"
+
 # include <stdint.h>
+# include <stdlib.h>
 # include <math.h>
 # include <stdbool.h>
 # include <unistd.h>
 
-# define ESCAPE_KEY 41
-# define W_KEY 26
-# define S_KEY 22
-# define A_KEY 4
-# define D_KEY 7
-# define WHITE 0xFFFFFFFF
-# define WINDOW_Y 900
-# define WINDOW_X 1600
-# define PLAYER_ROT_SPEED (2 * M_PI) / 8
-# define PLAYER_SPEED 3
-# define MAP_CHUNK_SIZE 64
-# define RAY_SIZE 2
-# define FOV 60 * (M_PI / 180)
-
-typedef struct s_ray_dir
-{
-	float	x;
-	float	y;
-}	t_ray_dir;
-
-typedef struct s_player
-{
-	t_coord	coords;
-	double	direction;
-	t_ray_dir	ray_dir[WINDOW_X / RAY_SIZE];
-}	t_player;
-
-typedef struct s_cub
-{
-	void		*mlx;
-	void		*win;
-	void		*sprites;
-	void		*img;
-	char		**map;
-	t_player	player;
-}	t_cub;
 
 /**
  *	@brief		This function is used to handle keypress
@@ -105,4 +74,5 @@ void	draw_square(t_cub *cub, t_coord coord, uint16_t size, int color);
  *	@param cub	The address of the t_cub struct
  */
 void	print_map(t_cub *cub);
+
 #endif

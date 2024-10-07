@@ -6,12 +6,12 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/09/29 14:44:07 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/06 17:58:41 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "game.h"
+#include "game/game.h"
 #include "mlx.h"
 
 int	main(int ac, char **av)

@@ -6,11 +6,11 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:09:17 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/23 14:41:51 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/06 17:58:25 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "game/game.h"
 #include "mlx.h"
 #include <stdio.h>
 

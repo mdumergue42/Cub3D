@@ -6,13 +6,14 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:37:56 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/29 14:45:02 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/04 15:29:00 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "mlx.h"
-#include "game.h"
+#include "parsing.h"
+#include "game/game.h"
 
 int	key_hook(int key, void *param)
 {

@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_square.c                                      :+:      :+:    :+:   */
+/*   dda_while.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 11:09:52 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/06 15:41:55 by adjoly           ###   ########.fr       */
+/*   Created: 2024/10/06 18:46:56 by adjoly            #+#    #+#             */
+/*   Updated: 2024/10/06 19:05:11 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game/game.h"
-#include "mlx.h"
 
-void	draw_square(t_cub *cub, t_coord coord, uint16_t size, int color)
+void	dda_while(t_dda *dda, char **map, t_coord map_coord)
 {
-	t_coord	start;
-
-	start = coord;
-	while (coord.x - start.x <= size)
+	dda->wall_hit = false;
+	while (!dda->wall_hit)
 	{
-		coord.y = start.y;
-		while (coord.y - start.y <= size)
+		if (dda->side_dist.x < dda->side_dist.y)
 		{
-			mlx_set_image_pixel(cub->mlx, cub->img, coord.x, coord.y, color);
-			coord.y++;
+			dda->side_dist.x += dda->delta_dist.x;
+			map_coord.x += dda->step.x;
+			dda->wall_side = HORIZONTAL;
 		}
-		coord.x++;
+		else
+		{
+			dda->side_dist.y += dda->delta_dist.y;
+			map_coord.y += dda->step.y;
+			dda->wall_side = VERTICAL;
+		}
+		if (map[map_coord.x][map_coord.y] == '1')
+			dda->wall_hit = true;
 	}
 }

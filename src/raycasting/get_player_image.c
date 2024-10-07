@@ -6,13 +6,12 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 11:05:02 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/29 14:44:28 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/05 14:30:08 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
-#include "mlx.h"
-#include "stdio.h"
+#include "game/game.h"
+#include <stdio.h>
 
 void	change_direction(double speed, bool clockwise, t_player *player)
 {
@@ -24,7 +23,6 @@ void	change_direction(double speed, bool clockwise, t_player *player)
 		player->direction -= 2 * M_PI;
 	else if (player->direction < 0)
 		player->direction += 2 * M_PI;
-	printf("%f\n", player->direction);
 }
 
 void	get_player_image(t_cub *cub, uint8_t key_pressed)

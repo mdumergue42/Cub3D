@@ -6,13 +6,13 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:26:29 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/29 16:46:44 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/06 17:58:04 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "game/game.h"
 
-void	get_ray_angle(t_player *player)
+void	get_ray_angle(t_player *player, t_dda (*dda)[800])
 {
 	uint16_t	x;
 	float		ray_angle;
@@ -21,8 +21,8 @@ void	get_ray_angle(t_player *player)
 	while (x < WINDOW_X)
 	{
 		ray_angle = player->direction - (FOV / 2) + (x / WINDOW_X) * FOV;
-		player->ray_angle[x / RAY_SIZE].x = cos(ray_angle);
-		player->ray_angle[x / RAY_SIZE].y = sin(ray_angle);
+		dda[x / RAY_SIZE]->ray_dir.x = cos(ray_angle);
+		dda[x / RAY_SIZE]->ray_dir.y = sin(ray_angle);
 		x += RAY_SIZE;
 	}
 }
