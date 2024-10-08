@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 23:47:14 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/07 19:05:59 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/08 13:28:24 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	get_side_dist(t_dda *dda, t_coord incell_coords, t_player *player)
 	}
 }
 
-void	setup_dda(t_dda (*dda)[800], t_player *player)
+void	setup_dda(t_dda (*dda)[WINDOW_X / RAY_SIZE], t_player *player)
 {
 	size_t	i;
 	t_coord	incell_coords;

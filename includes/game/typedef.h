@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:28:24 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/06 19:03:26 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/08 13:43:59 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 
 # include "parsing.h"
 # include <stdbool.h>
+
+/**
+ *	@brief	Enum for the wall side that has been hit
+ */
+typedef enum s_wall_side
+{
+	HORIZONTAL,
+	VERTICAL
+}	t_wall_side;
 
 typedef struct s_coord_f
 {
@@ -44,11 +53,6 @@ typedef struct s_cub
 	t_player	player;
 }	t_cub;
 
-typedef enum s_wall_side
-{
-	HORIZONTAL,
-	VERTICAL
-}	t_wall_side;
 
 typedef struct s_dda
 {
@@ -58,7 +62,6 @@ typedef struct s_dda
 	t_step		step;
 	t_wall_side	wall_side;
 	bool		wall_hit;
-
 }	t_dda;
 
 #endif
