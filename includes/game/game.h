@@ -6,24 +6,25 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/06 18:48:33 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/08 21:42:52 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
+# include <unistd.h>
+# include <stdint.h>
+# include <math.h>
+# include <stdbool.h>
+# include <stdlib.h>
+# include <stddef.h>
+# include <stdio.h>
+
 # include "dda.h"
 # include "settings.h"
 # include "parsing.h"
 # include "typedef.h"
-
-# include <stdint.h>
-# include <stdlib.h>
-# include <math.h>
-# include <stdbool.h>
-# include <unistd.h>
-
 
 /**
  *	@brief		This function is used to handle keypress

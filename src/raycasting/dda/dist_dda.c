@@ -6,11 +6,12 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:26:19 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/08 13:53:27 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/08 21:40:08 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game/dda.h"
+#include <stdint.h>
 #include <stddef.h>
 #include "game/settings.h"
 
