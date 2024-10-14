@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:04:10 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/13 17:44:12 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/13 21:28:23 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define DDA_H
 
 # include "typedef.h"
+# include "settings.h"
+# include <stdint.h>
 
 /**
  *	@brief		Function used to get all the ray angle
@@ -57,4 +59,5 @@ float		*dist_dda(t_dda dda[WINDOW_X / RAY_SIZE]);
  */
 uint16_t	*line_dda(float *wall_dist);
 
+uint16_t	*dda(t_player *player, char **map);
 #endif
