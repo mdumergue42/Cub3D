@@ -1,8 +1,6 @@
 obj/
 cub3D
 .direnv
-.envrc
-flake.nix
 compile_commands.json
 .cache
 libft/**/*.o
