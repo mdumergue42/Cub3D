@@ -6,7 +6,7 @@
 #    By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 16:02:18 by adjoly            #+#    #+#              #
-#    Updated: 2024/10/13 21:23:17 by adjoly           ###   ########.fr        #
+#    Updated: 2024/10/17 01:22:00 by adjoly           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS = $(shell find src -name *.c)
 
 OBJS = $(addprefix $(OBJSDIR), $(SRCS:.c=.o))
 
-FLAGS = -Wall -Werror -Wextra -g -lm -lSDL2 -MMD -MP
+FLAGS = -Wall -Werror -Wextra -g -MMD -MP 
 
 LIB = libft/libft.a \
 	  MacroLibX/libmlx.so
@@ -42,7 +42,7 @@ $(NAME): $(OBJS)
 	@echo "✅ Libft compiled"
 	@#@make -sj -C $(MACRO_DIR)
 	@#@echo "✅ MacroLibX compiled"
-	@$(CC) $(OBJS) $(LIB) -o $(NAME) $(FLAGS)
+	@$(CC) $(OBJS) $(LIB) -o $(NAME) $(FLAGS) -lm -lSDL2
 	@echo "✅ Compiled"
 
 $(OBJSDIR)%.o: %.c

@@ -51,7 +51,7 @@ HEADERS    = includes/
 all : ${NAME}
 
 ${OBJS} : 
-	@gcc -Wall -Wextra -Werror -I ${HEADERS} -c ${@:.o=.c} -o $@
+	@cc -Wall -Wextra -Werror -I ${HEADERS} -c ${@:.o=.c} -o $@
 
 ${NAME} : ${OBJS}
 	@ar rcs ${NAME} ${OBJS}
