@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:49:16 by madumerg          #+#    #+#             */
-/*   Updated: 2024/10/05 18:43:16 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/06 16:16:31 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		space_line(char *line);
 
 //parse_utils_two.c
 int		ft_count_line_map(char **map, int y);
-void	replace_nl(char *l);
+int		replace_nl(char *l);
 int		recup_map(char **old_map, int i, t_pars *pars);
 int		all_skip(char **map, t_pars *pars);
 

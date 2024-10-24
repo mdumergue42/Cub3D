@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:24:13 by madumerg          #+#    #+#             */
-/*   Updated: 2024/10/07 11:45:16 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:30:13 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	check_map_close(char **map)
 		x = 0;
 		while (map[y][x])
 		{
+			if (actual_char(map[y][0]) == 0)
+				return (1);
 			if (actual_char(map[y][x]) == 0 && \
 				(err_not_close(map[y][x + 1], map[y][x - 1], \
 				map[y + 1][x], map[y - 1][x]) == 1))
