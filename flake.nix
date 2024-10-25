@@ -23,8 +23,10 @@
 					];
 
 					LD_LIBRARY_PATH="${pkgs.vulkan-loader}/lib";
+					hardeningDisable = [ "all" ];
 
 					packages = with pkgs; [
+						bear
 						clang
 						gcc
 						gdb
