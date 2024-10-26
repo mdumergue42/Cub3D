@@ -6,15 +6,15 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:28:24 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/08 13:43:59 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/23 14:33:33 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# include "parsing.h"
 # include <stdbool.h>
+# include "parsing.h"
 
 /**
  *	@brief	Enum for the wall side that has been hit
@@ -39,8 +39,9 @@ typedef struct s_step
 
 typedef struct s_player
 {
-	t_coord	coords;
-	double	direction;
+	t_coord		coords;
+	t_coord		map_coords;
+	double		direction;
 }	t_player;
 
 typedef struct s_cub

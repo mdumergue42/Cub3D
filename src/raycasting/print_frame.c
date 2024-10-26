@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 21:01:53 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/13 21:37:17 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/23 11:19:58 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	draw_rectangle(t_cub *cub, void *img, t_coord start, t_coord end)
 void	*print_frame(t_cub *cub)
 {
 	uint16_t	*lines;
-	int		start;
-	int		stop;
-	size_t	i;
-	void	*img;
+	int			start;
+	int			stop;
+	size_t		i;
+	void		*img;
 
-	lines = dda(&cub->player, cub->map);
+	lines = dda(&(cub->player), cub->map);
 	img = mlx_new_image(cub->mlx, WINDOW_X, WINDOW_Y);
 	i = 0;
 	while (i < WINDOW_X / RAY_SIZE)
@@ -52,7 +52,7 @@ void	*print_frame(t_cub *cub)
 		stop = lines[i] / 2 + WINDOW_Y / 2;
 		if (stop >= WINDOW_Y)
 			stop = WINDOW_Y - 1;
-		draw_rectangle(cub, img, (t_coord){i * RAY_SIZE, start}, (t_coord){i * RAY_SIZE + RAY_SIZE - 1, stop});
+		draw_rectangle(cub, img, (t_coord){i * RAY_SIZE, start}, (t_coord){i * RAY_SIZE + RAY_SIZE + 1, stop});
 		i++;
 	}
 	return (img);

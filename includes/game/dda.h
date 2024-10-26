@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:04:10 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/13 21:28:23 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/23 15:00:05 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		setup_dda(t_dda (*dda)[800], t_player *player);
  *	@param map			The map as a char **
  *	@param map_coord	The coordinate of the player on the map_grid
  */
-void		while_dda(t_dda (*dda)[800], char **map, t_coord map_coord);
+void		while_dda(t_dda (*dda)[800], char **map, t_player *player);
 
 	/// NEED TO COMBINE THOSE IF NOT USEFULL TO SEPARATE
 /**

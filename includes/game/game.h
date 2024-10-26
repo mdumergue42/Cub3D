@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/08 21:42:52 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/24 11:38:56 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ int		key_hook(int key, void *param);
  *
  *	@param cub	The address of a t_cub struct filled with mlx data and other 
  *				thing
- *
  */
-void	get_player_image(t_cub *cub, uint8_t key_pressed);
+void	get_player_image(t_cub *cub);
 
 /**
  *	@brief		This function is here to change the direction of the player
@@ -54,7 +53,6 @@ void	get_player_image(t_cub *cub, uint8_t key_pressed);
  *	@param speed		The speed a which the player rotate
  *	@param clockwise	The direction which the player rotate
  *	@param player		A pointer to a t_player struct
- *
  */
 void	change_direction(double speed, bool clockwise, t_player *player);
 
@@ -65,7 +63,6 @@ void	change_direction(double speed, bool clockwise, t_player *player);
  *	@param coord	The coordinate of the printed square
  *	@param size		The size of the printed square
  *	@param color	The color of the printed square
- *
  */
 void	draw_square(t_cub *cub, t_coord coord, uint16_t size, int color);
 

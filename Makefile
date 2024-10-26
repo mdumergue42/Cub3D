@@ -6,7 +6,7 @@
 #    By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 16:02:18 by adjoly            #+#    #+#              #
-#    Updated: 2024/10/19 12:19:00 by adjoly           ###   ########.fr        #
+#    Updated: 2024/10/19 15:15:37 by adjoly           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL = bash
 
 NAME = cub3D
 
-CC = gcc
+CC = cc
 
 OBJSDIR = obj/
 
