@@ -5,59 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 14:04:10 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/23 15:00:05 by adjoly           ###   ########.fr       */
+/*   Created: 2024/10/28 13:04:36 by adjoly            #+#    #+#             */
+/*   Updated: 2024/10/28 14:37:10 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DDA_H
+# ifndef DDA_H
 # define DDA_H
 
-# include "typedef.h"
-# include "settings.h"
-# include <stdint.h>
+# include <math.h>
 
-/**
- *	@brief		Function used to get all the ray angle
- *
- *	@param player	The address of the t_player struct
- *	@param dda		The address of the t_dda struct
- */
-void		get_ray_angle(t_player *player, t_dda (*dda)[800]);
+# include "game.h"
+#include "game/vectwo.h"
 
-/**
- *	@brief		Function used to setup all the dda variable prior to casting
- *				the rays
- *
- *	@param player	The address of the t_player struct
- *	@param dda		The address of the t_dda struct
- *
- */
-void		setup_dda(t_dda (*dda)[800], t_player *player);
+typedef struct s_dda
+{
+	bool	h;
+	int		i;
+	t_vec2	map;
+	t_vec2	vert;
+	t_vec2	hori;
+	t_vec2	distance;
+}	t_dda;
 
-/**
- *	@brief		Function used to cast all the rays
- *
- *	@param dda			The address of the t_dda struct
- *	@param map			The map as a char **
- *	@param map_coord	The coordinate of the player on the map_grid
- */
-void		while_dda(t_dda (*dda)[800], char **map, t_player *player);
+typedef struct s_ray
+{
+	t_vec2	pos;
+	float	tan;
+	float	angle;
+	t_vec2	offset;
+	float	distance;
+}	t_ray;
 
-	/// NEED TO COMBINE THOSE IF NOT USEFULL TO SEPARATE
-/**
- *	@brief		Function used to get the distance from the player of all rays
- *
- *	@param dda			The address of the t_dda struct
- */
-float		*dist_dda(t_dda dda[WINDOW_X / RAY_SIZE]);
+void	dda_algo(t_player *play, t_render *render);
 
-/**
- *	@brief		Function used to get the size of the line to be printed on the screen
- *
- *	@param dda			The array of the all the distance to the wall of the rays
- */
-uint16_t	*line_dda(float *wall_dist);
-
-uint16_t	*dda(t_player *player, char **map);
 #endif

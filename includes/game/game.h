@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/24 11:38:56 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:08:09 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,34 @@
 # include <stddef.h>
 # include <stdio.h>
 
-# include "dda.h"
 # include "settings.h"
-# include "parsing.h"
-# include "typedef.h"
+
+# include "vectwo.h"
+
+# include "../parsing.h"
+
+typedef struct s_map
+{
+	char	**arr;
+	char	p_side;
+	t_coord	p_spawnpoint;
+	t_coord	size;
+}	t_map;
+
+typedef struct s_render
+{
+	t_map	*world;
+	void	*mlx;
+	void	*win;
+	void	*texture[4];
+}	t_render;
+
+typedef struct s_player
+{
+	t_vec2		coord;
+	t_coord		map_coords;
+	double		direction;
+}	t_player;
 
 /**
  *	@brief		This function is used to handle keypress
@@ -36,13 +60,6 @@
  */
 int		key_hook(int key, void *param);
 
-/**
- *	@brief		This function is used to create an image with the player position
- *
- *	@param cub	The address of a t_cub struct filled with mlx data and other 
- *				thing
- */
-void	get_player_image(t_cub *cub);
 
 /**
  *	@brief		This function is here to change the direction of the player
@@ -55,22 +72,5 @@ void	get_player_image(t_cub *cub);
  *	@param player		A pointer to a t_player struct
  */
 void	change_direction(double speed, bool clockwise, t_player *player);
-
-/**
- *	@brief		Function used to draw a square
- *
- *	@param cub		The adress of a t_cub struct
- *	@param coord	The coordinate of the printed square
- *	@param size		The size of the printed square
- *	@param color	The color of the printed square
- */
-void	draw_square(t_cub *cub, t_coord coord, uint16_t size, int color);
-
-/**
- *	@brief		Function used to draw the map
- *
- *	@param cub	The address of the t_cub struct
- */
-void	print_map(t_cub *cub);
 
 #endif
