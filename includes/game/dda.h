@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:04:36 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/28 14:37:10 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/29 14:15:59 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_dda
 {
 	bool	h;
 	int		i;
+	bool	s;
 	t_vec2	map;
 	t_vec2	vert;
 	t_vec2	hori;
@@ -37,6 +38,6 @@ typedef struct s_ray
 	float	distance;
 }	t_ray;
 
-void	dda_algo(t_player *play, t_render *render);
+void	dda_algo(t_render *render, t_dda *dda, t_ray *ray);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/10/24 12:51:06 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/30 10:02:56 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,33 @@
 #include "mlx.h"
 #include <stdlib.h>
 
-void	*print_frame(t_cub *cub);
-
 int	main(int ac, char **av)
 {
-	t_cub	cub;
+	t_render	render;
+	t_map		world;
+	t_player	player;
 
-	cub.map = ft_calloc(6, sizeof(char *));
-	cub.map[0] = ft_strdup("111111");
-	cub.map[1] = ft_strdup("101001");
-	cub.map[2] = ft_strdup("100001");
-	cub.map[3] = ft_strdup("100001");
-	cub.map[4] = ft_strdup("111111");
-	cub.map[5] = NULL;
+	render.player = &player;
+	render.world = &world;
+	world.celling = 0xffffa07a;
+	world.floor = 0xffadd8e6;
+	world.arr = ft_split("11111 10001 10001 10001 11111", ' ');
+	world.size.x = 5;
+	world.size.y = 5;
+	player.coord.x = 1;
+	player.coord.y = 1;
+	player.direction = 0;
+	render.mlx = mlx_init();
+	render.win = mlx_new_window(render.mlx, WINDOW_W, WINDOW_H, "WTF");
+	render.img = mlx_new_image(render.mlx, WINDOW_W, WINDOW_H);
+	render_frame(&render);
+	mlx_put_image_to_window(render.mlx, render.win, render.img, 0, 0);
 	(void)ac;
 	(void)av;
-	cub.mlx = mlx_init();
-	cub.win = mlx_new_window(cub.mlx, WINDOW_X, WINDOW_Y, "WTF");
-	cub.player.coords.x = 128;
-	cub.player.coords.y = 128;
-	cub.player.direction = 0;
-	cub.img = print_frame(&cub);
-	mlx_put_image_to_window(cub.mlx, cub.win, cub.img, 0, 0);
-	mlx_on_event(cub.mlx, cub.win, MLX_KEYDOWN, key_hook, &cub);
-	mlx_loop(cub.mlx);
-	mlx_destroy_image(cub.mlx, cub.img);
-	mlx_destroy_window(cub.mlx, cub.win);
-	mlx_destroy_display(cub.mlx);
+	mlx_on_event(render.mlx, render.win, MLX_KEYDOWN, key_hook, &render);
+	mlx_loop(render.mlx);
+	mlx_destroy_image(render.mlx, render.img);
+	mlx_destroy_window(render.mlx, render.win);
+	mlx_destroy_display(render.mlx);
 	return (0);
 }

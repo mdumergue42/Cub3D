@@ -6,43 +6,49 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:37:56 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/24 11:41:30 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/29 14:57:10 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "game/settings.h"
 #include "mlx.h"
-#include "game/game.h"
+#include <game/game.h>
+#include <game/utils_math.h>
 
-void	*print_frame(t_cub *cub);
+void	change_direction(float speed, bool clockwise, t_player *player)
+{
+	if (clockwise)
+		player->direction += speed;
+	else
+		player->direction -= speed;
+	fix_ang(&player->direction);
+}
 
 int	key_hook(int key, void *param)
 {
-	t_cub	*cub;
+	t_render	*render;
 
-	cub = (t_cub *)param;
-	(void)cub;
+	render = (t_render *)param;
 	if (key == ESCAPE_KEY)
-	{
-		mlx_loop_end(cub->mlx);
-		return (0);
-	}
+		return (mlx_loop_end(render->mlx));
 	if (key == W_KEY)
 	{
-		cub->player.coords.x += PLAYER_SPEED * cos(cub->player.direction);
-		cub->player.coords.y += PLAYER_SPEED * sin(cub->player.direction);
+		render->player->coord.x += PLAYER_SPEED * cos(render->player->direction);
+		render->player->coord.y += PLAYER_SPEED * sin(render->player->direction);
 	}
 	else if (key == S_KEY)
 	{
-		cub->player.coords.x -= PLAYER_SPEED * cos(cub->player.direction);
-		cub->player.coords.y -= PLAYER_SPEED * sin(cub->player.direction);
+		render->player->coord.x -= PLAYER_SPEED * cos(render->player->direction);
+		render->player->coord.y -= PLAYER_SPEED * sin(render->player->direction);
 	}
 	else if (key == D_KEY)
-		change_direction(PLAYER_ROT_SPEED, false, &cub->player);
+		change_direction(PLAYER_ROT_SPEED, false, render->player);
 	else if (key == A_KEY)
-		change_direction(PLAYER_ROT_SPEED, true, &cub->player);
-	mlx_destroy_image(cub->mlx, cub->img);
-	cub->img = print_frame(cub);
-	//get_player_image(cub);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img, 0, 0);
+		change_direction(PLAYER_ROT_SPEED, true, render->player);
+	printf("player coord x = %f, y = %f\n", render->player->coord.x, render->player->coord.y);
+	mlx_destroy_image(render->mlx, render->img);
+	render->img = mlx_new_image(render->mlx, WINDOW_W, WINDOW_H);
+	render_frame(render);
+	mlx_put_image_to_window(render->mlx, render->win, render->img, 0, 0);
 	return (0);
 }

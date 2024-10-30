@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   vectwo.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 14:09:17 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/06 17:58:25 by adjoly           ###   ########.fr       */
+/*   Created: 2024/10/26 15:47:29 by adjoly            #+#    #+#             */
+/*   Updated: 2024/10/28 15:20:24 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game/game.h"
-#include "mlx.h"
-#include <stdio.h>
+#include "game/vectwo.h"
+#include <math.h>
 
-void	print_map(t_cub *cub)
+
+float	vec2_dist(t_vec2 first, t_vec2 second)
 {
-	size_t	i;
-	size_t	j;
+	return (sqrt(powf(second.x - first.x, 2) + powf(second.y - first.y, 2)));
+}
 
-	i = 0;
-	while (cub->map[i])
-	{
-		j = 0;
-		while (cub->map[i][j])
-		{
-			if (cub->map[i][j] == '1')
-			{
-				draw_square(cub, (t_coord){j * MAP_CHUNK_SIZE, i * MAP_CHUNK_SIZE}, MAP_CHUNK_SIZE, WHITE);
-			}
-			j++;
-		}
-		i++;
-	}
+void	vec2_add(t_vec2 *first, t_vec2 second)
+{
+	first->x += second.x;
+	first->y += second.y;
+}
+
+void	vec2_sub(t_vec2 *first, t_vec2 second)
+{
+	first->x -= second.x;
+	first->y -= second.y;
 }

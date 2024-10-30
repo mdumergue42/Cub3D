@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/28 14:08:09 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/10/29 13:56:32 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,29 @@
 typedef struct s_map
 {
 	char	**arr;
+	int		floor;
+	int		celling;
 	char	p_side;
 	t_coord	p_spawnpoint;
 	t_coord	size;
 }	t_map;
 
-typedef struct s_render
-{
-	t_map	*world;
-	void	*mlx;
-	void	*win;
-	void	*texture[4];
-}	t_render;
-
 typedef struct s_player
 {
 	t_vec2		coord;
-	t_coord		map_coords;
-	double		direction;
+	float		direction;
 }	t_player;
+
+typedef struct s_render
+{
+	t_map		*world;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	t_player	*player;
+	void		*texture[4];
+}	t_render;
+
 
 /**
  *	@brief		This function is used to handle keypress
@@ -71,6 +75,15 @@ int		key_hook(int key, void *param);
  *	@param clockwise	The direction which the player rotate
  *	@param player		A pointer to a t_player struct
  */
-void	change_direction(double speed, bool clockwise, t_player *player);
+void	change_direction(float speed, bool clockwise, t_player *player);
+
+
+/**
+ *	@brief		Render a cub3d frame by executing a dda on every ray and 
+ *				putting the pixel on the window
+ *
+ *	@param render	The render struct with everything i need
+ */
+void	render_frame(t_render *render);
 
 #endif

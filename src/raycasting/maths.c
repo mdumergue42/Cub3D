@@ -5,27 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 15:47:29 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/28 14:00:34 by adjoly           ###   ########.fr       */
+/*   Created: 2024/10/29 10:05:15 by adjoly            #+#    #+#             */
+/*   Updated: 2024/10/29 10:05:29 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <game/type.h>
 #include <math.h>
 
-float	vec2_dist(t_vec2 first, t_vec2 second)
+void	fix_ang(float *ang)
 {
-	return (sqrt(powf(second.x - first.x, 2) + powf(second.y - first.y, 2)));
-}
-
-void	vec2_add(t_vec2 *first, t_vec2 second)
-{
-	first->x += second.x;
-	first->y += second.y;
-}
-
-void	vec2_sub(t_vec2 *first, t_vec2 second)
-{
-	first->x -= second.x;
-	first->y -= second.y;
+	if (*ang < 0)
+		*ang += 2 * M_PI;
+	if (*ang > 2 * M_PI)
+		*ang -= 2 * M_PI;
 }
