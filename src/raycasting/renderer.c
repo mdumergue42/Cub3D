@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:48:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/29 14:22:37 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/01 16:30:17 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,12 @@ void	print_line(t_render *render, t_ray *ray, int x)
 	y = 0;
 	while (y < line)
 	{
-		j = -1;
-		while (++j <= RAY_SIZE)
+		j = 0;
+		while (j < RAY_SIZE)
+		{
 			mlx_set_image_pixel(render->mlx, render->img, x + j, line_start + y, WHITE);
+			j++;
+		}
 		y++;
 	}
 }
@@ -89,8 +92,9 @@ void	render_frame(t_render *render)
 		ang = render->player->direction - ray.angle;
 		fix_ang(&ang);
 		ray.distance *= cos(ang);
+		printf("distance = %f\n", ray.distance);
 		print_line(render, &ray, i);
-		ray.angle += (M_PI / 180) / (WINDOW_W / FOV);
+		ray.angle += (M_PI / 180) / ((WINDOW_W * RAY_SIZE) / FOV);
 		fix_ang(&ray.angle);
 		i -= RAY_SIZE;
 	}

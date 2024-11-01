@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:06:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/29 14:55:59 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/01 15:53:20 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define WINDOW_W 1600
 # define PLAYER_ROT_SPEED (2 * M_PI) / 128
 # define PLAYER_SPEED 0.01
-# define RAY_SIZE 1
+# define RAY_SIZE 50
 # define FOV ( 60 * (M_PI / 180) )
 
 # define CHUNK_SIZE 64
