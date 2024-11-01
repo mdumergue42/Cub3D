@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:55:09 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/01 16:13:57 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/01 18:33:52 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void	setup_dda_ver(t_player *play, t_ray *ray, t_dda *dda)
 {
-	dda->distance.x = 1000000;
+	dda->distance.x = 100000;
 	dda->h = false;
 	dda->s = true;
 	ray->tan = tan(ray->angle);
@@ -27,14 +27,14 @@ void	setup_dda_ver(t_player *play, t_ray *ray, t_dda *dda)
 		ray->offset.x = -CHUNK_SIZE;
 		ray->offset.y = CHUNK_SIZE * ray->tan;
 		ray->pos.x = (((int)play->coord.x >> 6) << 6) - 0.001;
-		ray->pos.y -= (play->coord.x - ray->pos.x) * ray->tan + play->coord.y;
+		ray->pos.y = (play->coord.x - ray->pos.x) * ray->tan + play->coord.y;
 	}
 	else if(cos(ray->angle) > 0.001)
 	{
 		ray->offset.x = CHUNK_SIZE;
 		ray->offset.y = -CHUNK_SIZE * ray->tan;
 		ray->pos.x = (((int)play->coord.x >> 6) << 6) + CHUNK_SIZE;
-		ray->pos.y -= (play->coord.x - ray->pos.x) * ray->tan + play->coord.y;
+		ray->pos.y = (play->coord.x - ray->pos.x) * ray->tan + play->coord.y;
 	}
 	else
 	{
@@ -46,7 +46,7 @@ void	setup_dda_ver(t_player *play, t_ray *ray, t_dda *dda)
 
 void	setup_dda_hor(t_player *play, t_ray *ray, t_dda *dda)
 {
-	dda->distance.y = 1000000;
+	dda->distance.y = 100000;
 	dda->s = true;
 	dda->h = true;
 	ray->tan = 1 / tan(ray->angle);
@@ -62,7 +62,7 @@ void	setup_dda_hor(t_player *play, t_ray *ray, t_dda *dda)
 		ray->offset.y = -CHUNK_SIZE;
 		ray->offset.x = CHUNK_SIZE * ray->tan;
 		ray->pos.y = (((int)play->coord.y >> 6) << 6) - 0.001;
-		ray->pos.x -= (play->coord.y - ray->pos.y) * ray->tan + play->coord.x;
+		ray->pos.x = (play->coord.y - ray->pos.y) * ray->tan + play->coord.x;
 	}
 	else
 	{
@@ -81,8 +81,8 @@ void	dda_loop(t_dda	*dda, t_ray	*ray, t_map *map, t_player *play)
 	h = map->size.y;
 	while (dda->s && dda->i)
 	{
-		dda->map.x = (int)(ray->pos.x / 64);
-		dda->map.y = (int)(ray->pos.y / 64);
+		dda->map.x = (int)((int)ray->pos.x / 64);
+		dda->map.y = (int)((int)ray->pos.y / 64);
 		if (dda->map.x >= 0 && dda->map.x < w && dda->map.y >= 0 && dda->map.y < h && \
 				map->arr[(int)dda->map.y][(int)dda->map.x] ==  '1')
 		{
@@ -104,12 +104,16 @@ void	dda_algo(t_render *render, t_dda *dda, t_ray *ray)
 {
 	setup_dda_hor(render->player, ray, dda);
 	dda->i = render->world->size.y;
+	printf("caca pos = %f, %f\n", ray->pos.x, ray->pos.y);
 	dda_loop(dda, ray, render->world, render->player);
+	printf("pipi pos = %f, %f\n", ray->pos.x, ray->pos.y);
 	dda->hori.x = ray->pos.x;
 	dda->hori.y = ray->pos.y;
 	setup_dda_ver(render->player, ray, dda);
 	dda->i = render->world->size.x;
+	printf("caca pos = %f, %f\n", ray->pos.x, ray->pos.y);
 	dda_loop(dda, ray, render->world, render->player);
+	printf("pipi pos = %f, %f\n", ray->pos.x, ray->pos.y);
 	dda->vert.x = ray->pos.x;
 	dda->vert.y = ray->pos.y;
 	if (dda->distance.y < dda->distance.x)

@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/11/01 16:16:52 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/01 18:09:53 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	main(int ac, char **av)
 	world.arr = ft_split("11111 10001 10001 10001 11111", ' ');
 	world.size.x = 5;
 	world.size.y = 5;
-	player.coord.x = 2.5;
-	player.coord.y = 3.5;
-	player.direction = 2 * M_PI - 0.001;
+	player.coord.x = 2 * CHUNK_SIZE;
+	player.coord.y = 3 * CHUNK_SIZE;
+	player.direction = 0;
 	render.mlx = mlx_init();
 	render.win = mlx_new_window(render.mlx, WINDOW_W, WINDOW_H, "WTF");
 	render.img = mlx_new_image(render.mlx, WINDOW_W, WINDOW_H);
