@@ -6,23 +6,22 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:04:36 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/29 14:15:59 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/02 15:57:19 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef DDA_H
+#ifndef DDA_H
 # define DDA_H
 
 # include <math.h>
 
 # include "game.h"
-#include "game/vectwo.h"
+# include "game/vectwo.h"
 
 typedef struct s_dda
 {
 	bool	h;
 	int		i;
-	bool	s;
 	t_vec2	map;
 	t_vec2	vert;
 	t_vec2	hori;

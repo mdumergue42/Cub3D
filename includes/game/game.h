@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/10/29 13:56:32 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/02 15:55:39 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_render
 	void		*texture[4];
 }	t_render;
 
-
 /**
  *	@brief		This function is used to handle keypress
  *
@@ -63,7 +62,6 @@ typedef struct s_render
  *	@return		Minilibx go brrrr(useless always 0)
  */
 int		key_hook(int key, void *param);
-
 
 /**
  *	@brief		This function is here to change the direction of the player
@@ -76,7 +74,6 @@ int		key_hook(int key, void *param);
  *	@param player		A pointer to a t_player struct
  */
 void	change_direction(float speed, bool clockwise, t_player *player);
-
 
 /**
  *	@brief		Render a cub3d frame by executing a dda on every ray and 

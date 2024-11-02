@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:37:56 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/02 14:21:14 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/02 15:50:23 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,17 @@ int	key_hook(int key, void *param)
 		return (mlx_loop_end(render->mlx));
 	if (key == W_KEY)
 	{
-		render->player->coord.x += PLAYER_SPEED * cos(render->player->direction);
-		render->player->coord.y += PLAYER_SPEED * sin(render->player->direction);
+		render->player->coord.x += PLAYER_SPEED * \
+			cos(render->player->direction);
+		render->player->coord.y += PLAYER_SPEED * \
+			-sin(render->player->direction);
 	}
 	else if (key == S_KEY)
 	{
-		render->player->coord.x -= PLAYER_SPEED * cos(render->player->direction);
-		render->player->coord.y -= PLAYER_SPEED * sin(render->player->direction);
+		render->player->coord.x -= PLAYER_SPEED * \
+			cos(render->player->direction);
+		render->player->coord.y -= PLAYER_SPEED * \
+			-sin(render->player->direction);
 	}
 	else if (key == D_KEY)
 		change_direction(PLAYER_ROT_SPEED, false, render->player);
