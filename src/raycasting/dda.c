@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:55:09 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/01 18:33:52 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/02 13:59:41 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,11 @@ void	setup_dda_hor(t_player *play, t_ray *ray, t_dda *dda)
 
 void	dda_loop(t_dda	*dda, t_ray	*ray, t_map *map, t_player *play)
 {
-	uint16_t	w;
-	uint16_t	h;
-
-	w = map->size.x;
-	h = map->size.y;
 	while (dda->s && dda->i)
 	{
 		dda->map.x = (int)((int)ray->pos.x / 64);
 		dda->map.y = (int)((int)ray->pos.y / 64);
-		if (dda->map.x >= 0 && dda->map.x < w && dda->map.y >= 0 && dda->map.y < h && \
+		if (dda->map.x >= 0 && dda->map.x < map->size.x && dda->map.y >= 0 && dda->map.y < map->size.y && \
 				map->arr[(int)dda->map.y][(int)dda->map.x] ==  '1')
 		{
 			dda->i = 0;
@@ -104,28 +99,28 @@ void	dda_algo(t_render *render, t_dda *dda, t_ray *ray)
 {
 	setup_dda_hor(render->player, ray, dda);
 	dda->i = render->world->size.y;
-	printf("caca pos = %f, %f\n", ray->pos.x, ray->pos.y);
+	//printf("caca pos = %f, %f\n", ray->pos.x, ray->pos.y);
 	dda_loop(dda, ray, render->world, render->player);
-	printf("pipi pos = %f, %f\n", ray->pos.x, ray->pos.y);
+	//printf("pipi pos = %f, %f\n", ray->pos.x, ray->pos.y);
 	dda->hori.x = ray->pos.x;
 	dda->hori.y = ray->pos.y;
 	setup_dda_ver(render->player, ray, dda);
 	dda->i = render->world->size.x;
-	printf("caca pos = %f, %f\n", ray->pos.x, ray->pos.y);
+	//printf("caca pos = %f, %f\n", ray->pos.x, ray->pos.y);
 	dda_loop(dda, ray, render->world, render->player);
-	printf("pipi pos = %f, %f\n", ray->pos.x, ray->pos.y);
+	//printf("pipi pos = %f, %f\n", ray->pos.x, ray->pos.y);
 	dda->vert.x = ray->pos.x;
 	dda->vert.y = ray->pos.y;
 	if (dda->distance.y < dda->distance.x)
 	{
 		ray->pos.x = fabsf(dda->hori.x);
 		ray->pos.y = fabsf(dda->hori.y);
-		ray->distance = dda->distance.x;
+		ray->distance = dda->distance.y;
 	}
 	else
 	{
 		ray->pos.x = fabsf(dda->vert.x);
 		ray->pos.y = fabsf(dda->vert.y);
-		ray->distance = dda->distance.y;
+		ray->distance = dda->distance.x;
 	}
 }

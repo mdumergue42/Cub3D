@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:37:56 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/01 16:05:37 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/02 14:21:14 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,5 @@ int	key_hook(int key, void *param)
 		change_direction(PLAYER_ROT_SPEED, false, render->player);
 	else if (key == A_KEY)
 		change_direction(PLAYER_ROT_SPEED, true, render->player);
-	printf("player coord x = %f, y = %f\n", render->player->coord.x, render->player->coord.y);
-	mlx_destroy_image(render->mlx, render->img);
-	render->img = mlx_new_image(render->mlx, WINDOW_W, WINDOW_H);
-	render_frame(render);
-	mlx_put_image_to_window(render->mlx, render->win, render->img, 0, 0);
 	return (0);
 }

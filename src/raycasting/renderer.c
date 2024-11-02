@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:48:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/01 18:32:01 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/02 14:14:45 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,29 @@ void	draw_celling(t_render *render)
 
 void	print_line(t_render *render, t_ray *ray, int x)
 {
-	int	line;
+	int	line_size;
+	int	line_stop;
 	int	line_start;
-	int	y;
 
-	line = (CHUNK_SIZE * WINDOW_H) / ray->distance;
-	line_start = -line / 2 + WINDOW_H / 2;
-	y = 0;
-	while (y < line)
+	line_size = (CHUNK_SIZE * WINDOW_H) / ray->distance;
+	line_start = -line_size / 2 + WINDOW_H / 2;
+	line_stop = line_size / 2 + WINDOW_H / 2;
+	if (line_start < 0)
+		line_start = 0;
+	if (line_stop > WINDOW_H)
+		line_stop = WINDOW_H - 1;
+	while (line_start < line_stop)
 	{
-		mlx_set_image_pixel(render->mlx, render->img, x, line_start + y, WHITE);
-		y++;
+		mlx_set_image_pixel(render->mlx, render->img, x, line_start, WHITE);
+		line_start++;
 	}
 }
 
 void	render_frame(t_render *render)
 {
-	int	i;
+	int		i;
 	t_dda	dda;
 	t_ray	ray;
-	float	ang;
 
 	i = WINDOW_W;
 	ray.angle = render->player->direction - (M_PI / 180) / ((float)FOV / 2);
@@ -83,9 +86,6 @@ void	render_frame(t_render *render)
 	while(i > -1)
 	{
 		dda_algo(render, &dda, &ray);
-		ang = render->player->direction - ray.angle;
-		fix_ang(&ang);
-		ray.distance *= cos(ang);
 		print_line(render, &ray, i);
 		ray.angle += (M_PI / 180) / ((float)WINDOW_W / FOV);
 		fix_ang(&ray.angle);

@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/11/01 18:09:53 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/02 14:21:07 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 #include "libft.h"
 #include "mlx.h"
 #include <stdlib.h>
+
+int	loop(void *param)
+{
+	t_render	*render;
+
+	render = (t_render *)param;
+	mlx_destroy_image(render->mlx, render->img);
+	render->img = mlx_new_image(render->mlx, WINDOW_W, WINDOW_H);
+	render_frame(render);
+	mlx_put_image_to_window(render->mlx, render->win, render->img, 0, 0);
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
@@ -41,6 +53,7 @@ int	main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	mlx_on_event(render.mlx, render.win, MLX_KEYDOWN, key_hook, &render);
+	mlx_loop_hook(render.mlx, loop, &render);
 	mlx_loop(render.mlx);
 	mlx_destroy_image(render.mlx, render.img);
 	mlx_destroy_window(render.mlx, render.win);

@@ -6,12 +6,13 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 15:47:29 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/01 16:07:33 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/02 14:25:24 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game/vectwo.h"
 #include <math.h>
+#include <stdint.h>
 
 float	vec2_dist(t_vec2 first, t_vec2 second)
 {
@@ -28,4 +29,13 @@ void	vec2_sub(t_vec2 *first, t_vec2 second)
 {
 	first->x -= second.x;
 	first->y -= second.y;
+}
+
+t_vec2	vec2_mul_ret(t_vec2 vec, uint16_t n)
+{
+	t_vec2	ret;
+
+	ret.x = vec.x * n;
+	ret.y = vec.y * n;
+	return (ret);
 }
