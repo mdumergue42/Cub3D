@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:48:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/02 16:00:11 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:59:23 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_floor(t_render *render)
 	size_t	y;
 
 	y = WINDOW_H / 2;
-	while (y < WINDOW_H - 1)
+	while (y < WINDOW_H)
 	{
 		x = 0;
 		while (x < WINDOW_W)
