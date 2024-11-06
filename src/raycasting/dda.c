@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:55:09 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/02 15:58:33 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/06 12:34:58 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 
 void	setup_dda_ver(t_player *play, t_ray *ray, t_dda *dda)
 {
-	dda->distance.x = 100000;
+	dda->s = true;
 	dda->h = false;
+	dda->distance.x = 100000;
 	ray->tan = tan(ray->angle);
 	if (cos(ray->angle) < -0.001)
 	{
@@ -39,8 +40,9 @@ void	setup_dda_ver(t_player *play, t_ray *ray, t_dda *dda)
 
 void	setup_dda_hor(t_player *play, t_ray *ray, t_dda *dda)
 {
-	dda->distance.y = 100000;
 	dda->h = true;
+	dda->s = true;
+	dda->distance.y = 100000;
 	ray->tan = 1 / tan(ray->angle);
 	if (sin(ray->angle) < -0.001)
 	{
@@ -56,14 +58,19 @@ void	setup_dda_hor(t_player *play, t_ray *ray, t_dda *dda)
 		ray->pos.y = (((int)play->coord.y >> 6) << 6) - 0.001;
 		ray->pos.x = (play->coord.y - ray->pos.y) * ray->tan + play->coord.x;
 	}
+	else
+	{
+		dda->s = false;
+		ray->pos.x = play->coord.x;
+		ray->pos.y = play->coord.y;
+	}
 }
 
 void	dda_loop(t_dda	*dda, t_ray	*ray, t_map *map, t_player *play)
 {
-	while (dda->i)
-	{
-		dda->map.x = (int)((int)ray->pos.x / 64);
-		dda->map.y = (int)((int)ray->pos.y / 64);
+	while (dda->s && dda->i) {
+		dda->map.x = (ray->pos.x / 64);
+		dda->map.y = (ray->pos.y / 64);
 		if (dda->map.x >= 0 && dda->map.x < map->size.x && dda->map.y >= 0 && \
 			dda->map.y < map->size.y && \
 			map->arr[(int)dda->map.y][(int)dda->map.x] == '1')

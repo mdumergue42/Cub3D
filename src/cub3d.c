@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/11/02 14:21:07 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/06 11:50:38 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int	main(int ac, char **av)
 	render.mlx = mlx_init();
 	render.win = mlx_new_window(render.mlx, WINDOW_W, WINDOW_H, "WTF");
 	render.img = mlx_new_image(render.mlx, WINDOW_W, WINDOW_H);
-	render_frame(&render);
-	mlx_put_image_to_window(render.mlx, render.win, render.img, 0, 0);
 	(void)ac;
 	(void)av;
 	mlx_on_event(render.mlx, render.win, MLX_KEYDOWN, key_hook, &render);

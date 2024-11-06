@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:04:36 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/02 15:57:19 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/06 12:30:52 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_dda
 {
 	bool	h;
+	bool	s;
 	int		i;
 	t_vec2	map;
 	t_vec2	vert;
