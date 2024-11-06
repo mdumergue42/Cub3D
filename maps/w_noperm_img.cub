@@ -1,0 +1,11 @@
+NO ../img/noperm.png			
+SO ./leflo.png
+
+WE ./leflo.png
+EA ./leflo.png
+C 255,100,200
+F 50,0,250
+
+11111
+1100W1
+111111
