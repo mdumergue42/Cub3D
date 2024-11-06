@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 15:52:39 by madumerg          #+#    #+#             */
-/*   Updated: 2024/02/02 14:25:22 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/17 01:28:48 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	(void)write(1, &c, 1);
 	return (1);
 }
 
@@ -56,7 +56,7 @@ int	ft_putstr(char *str)
 		return (ft_putstr("(null)"));
 	while (str[i] != '\0')
 	{
-		write(1, &str[i], 1);
+		(void)write(1, &str[i], 1);
 		i++;
 	}
 	return (i);

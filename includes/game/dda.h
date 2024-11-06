@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_handler.c                                    :+:      :+:    :+:   */
+/*   dda.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 16:37:56 by adjoly            #+#    #+#             */
-/*   Updated: 2024/09/12 14:40:22 by adjoly           ###   ########.fr       */
+/*   Created: 2024/10/28 13:04:36 by adjoly            #+#    #+#             */
+/*   Updated: 2024/11/06 12:30:52 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "mlx.h"
-#include "game.h"
+#ifndef DDA_H
+# define DDA_H
 
-int	key_hook(int key, t_cub *cub)
+# include <math.h>
+
+# include "game.h"
+# include "game/vectwo.h"
+
+typedef struct s_dda
 {
-	(void)mlx;
-	if (key == ESCAPE_KEY)
-		mlx_loop_end(cub->mlx);
-	if (key == W_KEY)
-		printf("UP\n");
-	if (key == S_KEY)
-		printf("DOWN\n");
-	if (key == D_KEY)
-		printf("RIGHT\n");
-	if (key == A_KEY)
-		printf("LEFT\n");
-	return (0);
-}
+	bool	h;
+	bool	s;
+	int		i;
+	t_vec2	map;
+	t_vec2	vert;
+	t_vec2	hori;
+	t_vec2	distance;
+}	t_dda;
+
+typedef struct s_ray
+{
+	t_vec2	pos;
+	float	tan;
+	float	angle;
+	t_vec2	offset;
+	float	distance;
+}	t_ray;
+
+void	dda_algo(t_render *render, t_dda *dda, t_ray *ray);
+
+#endif

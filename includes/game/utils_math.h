@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   utils_math.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madumerg <madumerg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 14:33:15 by madumerg          #+#    #+#             */
-/*   Updated: 2024/10/17 01:13:01 by adjoly           ###   ########.fr       */
+/*   Created: 2024/10/29 10:07:24 by adjoly            #+#    #+#             */
+/*   Updated: 2024/11/02 15:54:32 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef UTILS_MATH_H
+# define UTILS_MATH_H
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	(void)write(fd, s, ft_strlen(s));
-}
+# include <math.h>
+
+void	fix_ang(float *ang);
+
+#endif

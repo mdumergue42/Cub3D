@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:33:06 by madumerg          #+#    #+#             */
-/*   Updated: 2024/04/04 17:11:24 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/10/17 01:28:14 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_putendl_fd(char *s, int fd)
 		return ;
 	while (s[i] != '\0')
 	{
-		write(fd, &s[i], 1);
+		(void)write(fd, &s[i], 1);
 		i++;
 	}
-	write(fd, "\n", 1);
+	(void)write(fd, "\n", 1);
 }

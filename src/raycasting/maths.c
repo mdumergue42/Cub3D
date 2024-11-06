@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   maths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madumerg <madumerg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 14:33:15 by madumerg          #+#    #+#             */
-/*   Updated: 2024/10/17 01:13:01 by adjoly           ###   ########.fr       */
+/*   Created: 2024/10/29 10:05:15 by adjoly            #+#    #+#             */
+/*   Updated: 2024/11/01 17:25:32 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <math.h>
 
-void	ft_putstr_fd(char *s, int fd)
+void	fix_ang(float *ang)
 {
-	(void)write(fd, s, ft_strlen(s));
+	if (*ang < 0)
+		*ang += 2 * M_PI;
+	if (*ang > 2 * M_PI)
+		*ang -= 2 * M_PI;
 }

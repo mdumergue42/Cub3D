@@ -1,13 +1,9 @@
 obj/
 cub3D
 .direnv
-.envrc
-flake.nix
 compile_commands.json
 .cache
 libft/**/*.o
 libft/**/*.a
 src/main.c
 vgcore.*
-Makefile
-src/cub3d.c
