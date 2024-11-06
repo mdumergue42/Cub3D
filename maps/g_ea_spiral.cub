@@ -1,8 +1,9 @@
-NO ../img/flo.png			
-SO ../img/suki.png
+NO ./img/flo.png			
+SO ./img/suki.png
 
-WE ../img/cahuete.png
-EA ../img/kanel.png
+WE ./img/cahuete.png
+EA ./img/kanel.png
+C 67,4,22
 F 50,0,137
 
 111111111111111111111111111111111

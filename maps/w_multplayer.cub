@@ -1,8 +1,8 @@
-NO ../img/flo.png			
-SO ../img/suki.png
+NO ./img/flo.png			
+SO ./img/suki.png
 
-WE ../img/cahuete.png
-EA ../img/kanel.png
+WE ./img/cahuete.png
+EA ./img/kanel.png
 C 255,100,200
 F 50,0,250
 
