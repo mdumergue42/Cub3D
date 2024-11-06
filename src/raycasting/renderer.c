@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:48:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/06 11:59:23 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/06 13:57:29 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,11 @@ void	print_line(t_render *render, t_ray *ray, int x)
 	if (line_start < 0)
 		line_start = 0;
 	if (line_stop > WINDOW_H)
-		line_stop = WINDOW_H - 1;
+		line_stop = WINDOW_H;
 	while (line_start < line_stop)
 	{
-		mlx_set_image_pixel(render->mlx, render->img, x, line_start, WHITE);
+		if (x < WINDOW_W && x >= 0)
+			mlx_set_image_pixel(render->mlx, render->img, x, line_start, WHITE);
 		line_start++;
 	}
 }

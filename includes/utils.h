@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.h                                         :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 14:06:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/06 13:19:25 by adjoly           ###   ########.fr       */
+/*   Created: 2024/11/06 13:03:02 by adjoly            #+#    #+#             */
+/*   Updated: 2024/11/06 13:21:21 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SETTINGS_H
-# define SETTINGS_H
+#ifndef UTILS_H
+# define UTILS_H
 
-// Key code
-# define ESCAPE_KEY 41
-# define W_KEY 26
-# define S_KEY 22
-# define A_KEY 4
-# define D_KEY 7
+# include "parsing.h"
+# include "game/game.h"
 
-# define WHITE 0xFFFFFFFF
-
-# define WINDOW_W 1600
-# define WINDOW_H 900
-# define PLAYER_ROT_SPEED 0.034906585039887
-# define PLAYER_SPEED 1.5
-# define FOV 70
-
-# define CHUNK_SIZE 64
-# define TEXTURE_SIZE 128
+t_player	init_player(t_pars parsing);
+t_map		init_world(t_pars parsing);
+void		init_texture(t_render *render, t_pars parsing);
 
 #endif

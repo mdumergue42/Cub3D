@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:55:09 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/06 12:34:58 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/06 13:21:38 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	setup_dda_hor(t_player *play, t_ray *ray, t_dda *dda)
 
 void	dda_loop(t_dda	*dda, t_ray	*ray, t_map *map, t_player *play)
 {
-	while (dda->s && dda->i) {
+	while (dda->s && dda->i)
+	{
 		dda->map.x = (ray->pos.x / 64);
 		dda->map.y = (ray->pos.y / 64);
 		if (dda->map.x >= 0 && dda->map.x < map->size.x && dda->map.y >= 0 && \
