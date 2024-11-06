@@ -1,10 +1,8 @@
-NO ./leflo.png
+NO ../img/flo.png			
+SO ../img/suki.png
 
-			
-SO ./leflo.png
-
-WE ./leflo.png
-EA ./leflo.png
+WE ../img/cahuete.png
+EA ../img/kanel.png
 C 256,1874700,200
 F 50,0,250
 
