@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:01:03 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/06 13:44:16 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/07 12:17:13 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mlx.h"
 #include "parsing.h"
 #include "game/game.h"
+#include "strings.h"
 
 t_player	init_player(t_pars parsing)
 {
@@ -21,6 +22,7 @@ t_player	init_player(t_pars parsing)
 
 	player.coord.x = parsing.coor.x * CHUNK_SIZE + (CHUNK_SIZE / 2);
 	player.coord.y = parsing.coor.y * CHUNK_SIZE + (CHUNK_SIZE / 2);
+	ft_bzero(player.key, 4);
 	if (parsing.l_player == 'N')
 		player.direction = M_PI / 2;
 	else if (parsing.l_player == 'S')

@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/02 15:55:39 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/07 12:15:23 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_player
 {
 	t_vec2		coord;
 	float		direction;
+	bool		key[4];
 }	t_player;
 
 typedef struct s_render
@@ -62,6 +63,9 @@ typedef struct s_render
  *	@return		Minilibx go brrrr(useless always 0)
  */
 int		key_hook(int key, void *param);
+int	key_down(int key, void *param);
+int	key_down(int key, void *param);
+int	key_up(int key, void *param);
 
 /**
  *	@brief		This function is here to change the direction of the player

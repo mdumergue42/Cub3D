@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/11/06 13:43:14 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/07 12:21:41 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,25 @@ int	loop(void *param)
 
 	render = (t_render *)param;
 	mlx_destroy_image(render->mlx, render->img);
+
+	if (render->player->key[0])
+	{
+		render->player->coord.x += PLAYER_SPEED * \
+			cos(render->player->direction);
+		render->player->coord.y += PLAYER_SPEED * \
+			-sin(render->player->direction);
+	}
+	if (render->player->key[2])
+	{
+		render->player->coord.x -= PLAYER_SPEED * \
+			cos(render->player->direction);
+		render->player->coord.y -= PLAYER_SPEED * \
+			-sin(render->player->direction);
+	}
+	if (render->player->key[3])
+		change_direction(PLAYER_ROT_SPEED, false, render->player);
+	if (render->player->key[1])
+		change_direction(PLAYER_ROT_SPEED, true, render->player);
 	render->img = mlx_new_image(render->mlx, WINDOW_W, WINDOW_H);
 	render_frame(render);
 	mlx_put_image_to_window(render->mlx, render->win, render->img, 0, 0);
@@ -50,7 +69,8 @@ int	main(int ac, char **av)
 	render.world = &world;
 	init_texture(&render, parsing);
 	render.img = mlx_new_image(render.mlx, WINDOW_W, WINDOW_H);
-	mlx_on_event(render.mlx, render.win, MLX_KEYDOWN, key_hook, &render);
+	mlx_on_event(render.mlx, render.win, MLX_KEYDOWN, key_down, &render);
+	mlx_on_event(render.mlx, render.win, MLX_KEYUP, key_up, &render);
 	mlx_loop_hook(render.mlx, loop, &render);
 	mlx_loop(render.mlx);
 	mlx_destroy_image(render.mlx, render.img);
