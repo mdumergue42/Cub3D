@@ -60,7 +60,10 @@ int	main(int ac, char **av)
 
 	parsing = init_pars();
 	if (basics_check(ac, av, &parsing))
+	{
+		free_pars(&parsing);
 		return (EXIT_FAILURE);
+	}
 	render.mlx = mlx_init();
 	render.win = mlx_new_window(render.mlx, WINDOW_W, WINDOW_H, "WTF");
 	player = init_player(parsing);
