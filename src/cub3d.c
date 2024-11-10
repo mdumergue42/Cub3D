@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/11/07 12:21:41 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/10 16:57:46 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,34 @@
 #include <stdlib.h>
 #include "utils.h"
 
-int	loop(void *param)
+void	move_for_back(t_render *render, bool forward)
 {
-	t_render	*render;
-
-	render = (t_render *)param;
-	mlx_destroy_image(render->mlx, render->img);
-
-	if (render->player->key[0])
+	if (forward)
 	{
 		render->player->coord.x += PLAYER_SPEED * \
 			cos(render->player->direction);
 		render->player->coord.y += PLAYER_SPEED * \
 			-sin(render->player->direction);
 	}
-	if (render->player->key[2])
+	else
 	{
 		render->player->coord.x -= PLAYER_SPEED * \
 			cos(render->player->direction);
 		render->player->coord.y -= PLAYER_SPEED * \
 			-sin(render->player->direction);
 	}
+}
+
+int	loop(void *param)
+{
+	t_render	*render;
+
+	render = (t_render *)param;
+	mlx_destroy_image(render->mlx, render->img);
+	if (render->player->key[0])
+		move_for_back(render, true);
+	if (render->player->key[2])
+		move_for_back(render, false);
 	if (render->player->key[3])
 		change_direction(PLAYER_ROT_SPEED, false, render->player);
 	if (render->player->key[1])
@@ -49,6 +56,18 @@ int	loop(void *param)
 	render_frame(render);
 	mlx_put_image_to_window(render->mlx, render->win, render->img, 0, 0);
 	return (0);
+}
+
+void	delete_everything(t_pars *parsing, t_render *render)
+{
+	mlx_destroy_image(render->mlx, render->img);
+	mlx_destroy_image(render->mlx, render->texture[0]);
+	mlx_destroy_image(render->mlx, render->texture[1]);
+	mlx_destroy_image(render->mlx, render->texture[2]);
+	mlx_destroy_image(render->mlx, render->texture[3]);
+	mlx_destroy_window(render->mlx, render->win);
+	mlx_destroy_display(render->mlx);
+	free_pars(parsing);
 }
 
 int	main(int ac, char **av)
@@ -76,13 +95,6 @@ int	main(int ac, char **av)
 	mlx_on_event(render.mlx, render.win, MLX_KEYUP, key_up, &render);
 	mlx_loop_hook(render.mlx, loop, &render);
 	mlx_loop(render.mlx);
-	mlx_destroy_image(render.mlx, render.img);
-	mlx_destroy_image(render.mlx, render.texture[0]);
-	mlx_destroy_image(render.mlx, render.texture[1]);
-	mlx_destroy_image(render.mlx, render.texture[2]);
-	mlx_destroy_image(render.mlx, render.texture[3]);
-	mlx_destroy_window(render.mlx, render.win);
-	mlx_destroy_display(render.mlx);
-	free_pars(&parsing);
+	delete_everything(&parsing, &render);
 	return (EXIT_SUCCESS);
 }

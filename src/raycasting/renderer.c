@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:48:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/10 15:44:00 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/10 16:49:53 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,75 +15,32 @@
 #include <game/dda.h>
 #include <game/settings.h>
 #include <game/game.h>
+#include <game/render.h>
 
-void	draw_floor(t_render *render)
+int	get_color(t_ray *ray, t_dda *dda, t_render *render, \
+				int y)
 {
-	size_t	x;
-	size_t	y;
-
-	y = WINDOW_H / 2;
-	while (y < WINDOW_H)
-	{
-		x = 0;
-		while (x < WINDOW_W)
-		{
-			mlx_set_image_pixel(render->mlx, render->img, x, y, \
-				render->world->floor);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	draw_celling(t_render *render)
-{
-	size_t	x;
-	size_t	y;
-
-	y = 0;
-	while (y < WINDOW_H / 2)
-	{
-		x = 0;
-		while (x < WINDOW_W)
-		{
-			mlx_set_image_pixel(render->mlx, render->img, x, y, \
-				render->world->celling);
-			x++;
-		}
-		y++;
-	}
-}
-
-int	get_color(t_ray *ray, t_dda *dda, t_render *render, int line_start, int line_stop, int line_size)
-{
-	int	x;	
-	int	h;
-	int	color;
+	int		x;	
+	int		color;
 	void	**texture;
+	int		line_stop;
+	int		line_size;
 
-	(void)ray;
+	line_size = (CHUNK_SIZE * WINDOW_H) / ray->distance;
 	line_stop = line_size / 2 + WINDOW_H / 2;
+	y = abs((line_stop - y) * TEXTURE_SIZE / line_size - 63);
 	if (dda->distance.y < dda->distance.x)
 	{
 		x = (int)dda->hori.x % CHUNK_SIZE;
-		h = abs((line_stop - line_start) * TEXTURE_SIZE / line_size - 63);
-		if (ray->angle < M_PI)
-			texture = &render->texture[0];
-		else
-			texture = &render->texture[2];
-		color = mlx_get_image_pixel(render->mlx, *texture, x, h);
+		texture = get_texture(true, render, ray);
 	}
 	else
 	{
 		x = (int)dda->vert.y % CHUNK_SIZE;
-		h = abs((line_stop - line_start) * TEXTURE_SIZE / line_size - 63);
-		if (ray->angle <= 3 * M_PI / 2 && ray->angle >= M_PI / 2)
-			texture = &render->texture[1];
-		else
-			texture = &render->texture[3];
-		color = mlx_get_image_pixel(render->mlx, *texture, x, h);
+		texture = get_texture(false, render, ray);
 	}
-	return (color);	
+	color = mlx_get_image_pixel(render->mlx, *texture, x, y);
+	return (color);
 }
 
 void	print_line(t_render *render, t_ray *ray, int x, t_dda *dda)
@@ -102,7 +59,8 @@ void	print_line(t_render *render, t_ray *ray, int x, t_dda *dda)
 	while (line_start < line_stop)
 	{
 		if (x < WINDOW_W && x >= 0)
-			mlx_set_image_pixel(render->mlx, render->img, x, line_start, get_color(ray, dda, render, line_start, line_stop, line_size));
+			mlx_set_image_pixel(render->mlx, render->img, x, line_start, \
+						get_color(ray, dda, render, line_start));
 		line_start++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:01:03 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/09 15:49:41 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/10 16:32:18 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,12 @@ void	init_texture(t_render *render, t_pars parsing)
 {
 	int	i;
 
-	render->texture[0] = mlx_png_file_to_image(render->mlx, parsing.no_png, &i, &i);
-	render->texture[1] = mlx_png_file_to_image(render->mlx, parsing.we_png, &i, &i);
-	render->texture[2] = mlx_png_file_to_image(render->mlx, parsing.so_png, &i, &i);
-	render->texture[3] = mlx_png_file_to_image(render->mlx, parsing.ea_png, &i, &i);
+	render->texture[0] = mlx_png_file_to_image(render->mlx, parsing.no_png, \
+											&i, &i);
+	render->texture[1] = mlx_png_file_to_image(render->mlx, parsing.we_png, \
+											&i, &i);
+	render->texture[2] = mlx_png_file_to_image(render->mlx, parsing.so_png, \
+											&i, &i);
+	render->texture[3] = mlx_png_file_to_image(render->mlx, parsing.ea_png, \
+											&i, &i);
 }
