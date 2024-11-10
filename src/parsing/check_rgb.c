@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 09:36:07 by madumerg          #+#    #+#             */
-/*   Updated: 2024/10/05 18:10:09 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/10 11:58:40 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ int	check_nb_color(char *r, char *g, char *b)
 {
 	if (ft_strlen(r) > 3 || ft_strlen(g) > 3 || ft_strlen(b) > 3 || \
 		ft_atoi(r) > 255 || ft_atoi(g) > 255 || ft_atoi(b) > 255)
+	{
+		free(r);
+		free(g);
+		free(b);
 		return (-1);
+	}
 	return (0);
 }
 
