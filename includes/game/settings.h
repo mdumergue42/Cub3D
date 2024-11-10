@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:06:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/09 15:54:46 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/10 13:48:57 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@
 # define FOV 70
 
 # define CHUNK_SIZE 64
-# define TEXTURE_SIZE 128
+# define TEXTURE_SIZE 64
 
 #endif

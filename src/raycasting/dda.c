@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:55:09 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/06 13:21:38 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/10 14:26:42 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ void	setup_dda_ver(t_player *play, t_ray *ray, t_dda *dda)
 		ray->offset.y = -CHUNK_SIZE * ray->tan;
 		ray->pos.x = (((int)play->coord.x >> 6) << 6) + CHUNK_SIZE;
 		ray->pos.y = (play->coord.x - ray->pos.x) * ray->tan + play->coord.y;
+	}
+	else
+	{
+		dda->s = false;
+		ray->pos.x = play->coord.x;
+		ray->pos.y = play->coord.y;
 	}
 }
 
