@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/11/11 13:49:05 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 14:22:38 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	render.mlx = mlx_init();
-	render.win = mlx_new_window(render.mlx, WINDOW_W, WINDOW_H, "WTF");
+	render.win = mlx_new_window(render.mlx, WINDOW_W, WINDOW_H, WINDOW_TITLE);
 	player = init_player(parsing);
 	world = init_world(parsing);
 	render.player = &player;

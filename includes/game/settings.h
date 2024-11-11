@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:06:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/11 14:15:35 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 14:22:20 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define PLAYER_ROT_SPEED 0.1308996939
 # define PLAYER_SPEED 10
 # define FOV 70
+# define WINDOW_TITLE "Cub3D"
 
 # define CHUNK_SIZE 64
 # define TEXTURE_SIZE 64
