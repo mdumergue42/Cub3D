@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 09:57:13 by madumerg          #+#    #+#             */
-/*   Updated: 2024/10/05 18:33:01 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:09:41 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,22 @@ int	count_line_file(int fd)
 	}
 	close (fd);
 	return (i);
+}
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (dest[i] != '\0')
+		i++;
+	j = 0;
+	while (src[j] != '\0')
+	{
+		dest[j + i] = src[j];
+		j++;
+	}
+	dest[i + j] = '\0';
+	return (dest);
 }

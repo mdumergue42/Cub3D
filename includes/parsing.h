@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:49:16 by madumerg          #+#    #+#             */
-/*   Updated: 2024/11/06 12:50:01 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 15:12:35 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,11 @@ int		check_format_rgb(char *sign, char **tab, t_pars *pars);
 //color_utils.c
 int		create_argb(int r, int g, int b);
 char	*ft_strndup_color(char *src, int start, int end);
-int		check_char_color(char *tab);
+int		check_char_color(char *str);
+
+//color_utils_two.c
+int		total_len(char **tab);
+char	*multi_join(char **tab, int ct);
 
 //find_player.c
 int		search_letter(char **map, int i, char l);
@@ -102,6 +106,7 @@ int		count_tab(char **tab);
 void	convert_white_s(char *str);
 int		longest_line(char **line);
 int		count_line_file(int fd);
+char	*ft_strcat(char *dest, char *src);
 
 //clear_free.c
 void	free_tab(char **tab);

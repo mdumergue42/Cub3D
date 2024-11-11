@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 19:44:37 by madumerg          #+#    #+#             */
-/*   Updated: 2024/10/05 17:52:43 by madumerg         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:09:04 by madumerg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,24 @@ char	*ft_strndup_color(char *src, int start, int end)
 
 int	valid_char_color(char c)
 {
-	if (c == ',' || (c >= '0' && c <= '9'))
+	if (c == ',' || (c >= '0' && c <= '9') || c == '\t' \
+		|| c == ' ' || c == '\0')
 		return (0);
 	return (1);
 }
 
-int	check_char_color(char *tab)
+int	check_char_color(char *str)
 {
 	int	i;
 
-	i = 0;
-	while (tab[i])
+	if (str[0] == 'C' || str[0] == 'F')
+		i = 1;
+	else
+		i = 0;
+	while (str[i])
 	{
-		if (valid_char_color(tab[i]) == 1)
-			return (1);
+		if (valid_char_color(str[i]) == 1)
+			return (err_mess(INVALID_CHAR));
 		i++;
 	}
 	return (0);
