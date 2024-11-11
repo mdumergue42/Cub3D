@@ -6,11 +6,12 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:55:09 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/10 14:26:42 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 12:23:20 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game/vectwo.h"
+#include <stdint.h>
 #include <game/settings.h>
 #include <game/dda.h>
 #include <math.h>
@@ -99,11 +100,11 @@ void	dda_loop(t_dda	*dda, t_ray	*ray, t_map *map, t_player *play)
 void	dda_algo(t_render *render, t_dda *dda, t_ray *ray)
 {
 	setup_dda_hor(render->player, ray, dda);
-	dda->i = render->world->size.y;
+	dda->i = RENDER_DISTANCE;
 	dda_loop(dda, ray, render->world, render->player);
 	dda->hori = ray->pos;
 	setup_dda_ver(render->player, ray, dda);
-	dda->i = render->world->size.x;
+	dda->i = RENDER_DISTANCE;
 	dda_loop(dda, ray, render->world, render->player);
 	dda->vert = ray->pos;
 	if (dda->distance.y < dda->distance.x)

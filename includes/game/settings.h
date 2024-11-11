@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:06:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/10 13:48:57 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 12:26:38 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@
 # define WINDOW_W 1600
 # define WINDOW_H 900
 # define PLAYER_ROT_SPEED 0.034906585039887
-# define PLAYER_SPEED 5
+# define PLAYER_SPEED 10
 # define FOV 70
 
 # define CHUNK_SIZE 64
 # define TEXTURE_SIZE 64
+# define RENDER_DISTANCE 64
 
 #endif
