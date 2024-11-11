@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:06:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/11 12:26:38 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 13:43:41 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@
 # define S_KEY 22
 # define A_KEY 4
 # define D_KEY 7
+# define LEFT_KEY 80
+# define RIGHT_KEY 79
 
 # define WHITE 0xFFFFFFFF
 
 # define WINDOW_W 1600
 # define WINDOW_H 900
-# define PLAYER_ROT_SPEED 0.034906585039887
+# define PLAYER_ROT_SPEED 0.1308996939
 # define PLAYER_SPEED 10
 # define FOV 70
 
 # define CHUNK_SIZE 64
 # define TEXTURE_SIZE 64
-# define RENDER_DISTANCE 64
+# define RENDER_DISTANCE 65
 
 #endif

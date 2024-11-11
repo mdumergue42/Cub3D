@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/10 16:41:35 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 13:27:55 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_player
 {
 	t_vec2		coord;
 	float		direction;
-	bool		key[4];
+	bool		key[6];
 }	t_player;
 
 typedef struct s_render
@@ -64,6 +64,7 @@ typedef struct s_render
  */
 int		key_down(int key, void *param);
 int		key_up(int key, void *param);
+int		window_event(int event, void *param);
 
 /**
  *	@brief		This function is here to change the direction of the player
