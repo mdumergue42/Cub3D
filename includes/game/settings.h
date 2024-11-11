@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:06:39 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/11 13:43:41 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 14:15:35 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 # define WHITE 0xFFFFFFFF
 
-# define WINDOW_W 1600
-# define WINDOW_H 900
+# define WINDOW_W 1024
+# define WINDOW_H 768
 # define PLAYER_ROT_SPEED 0.1308996939
 # define PLAYER_SPEED 10
 # define FOV 70
