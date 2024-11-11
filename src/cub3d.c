@@ -6,7 +6,7 @@
 /*   By: madumerg <madumerg@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:58:27 by madumerg          #+#    #+#             */
-/*   Updated: 2024/11/11 13:37:32 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 13:49:05 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,43 +19,6 @@
 #include "parsing.h"
 #include <stdlib.h>
 #include "utils.h"
-
-void	move_for_back(t_render *render, bool forward)
-{
-	if (forward)
-	{
-		render->player->coord.x += PLAYER_SPEED * \
-			cos(render->player->direction);
-		render->player->coord.y += PLAYER_SPEED * \
-			-sin(render->player->direction);
-	}
-	else
-	{
-		render->player->coord.x -= PLAYER_SPEED * \
-			cos(render->player->direction);
-		render->player->coord.y -= PLAYER_SPEED * \
-			-sin(render->player->direction);
-	}
-}
-
-void	move_right_left(t_render *render, bool right)
-{
-	if (right)
-	{
-		render->player->coord.x += PLAYER_SPEED * \
-			sin(render->player->direction);
-		render->player->coord.y += PLAYER_SPEED * \
-			cos(render->player->direction);
-	}
-	else
-	{
-		render->player->coord.x -= PLAYER_SPEED * \
-			sin(render->player->direction);
-		render->player->coord.y -= PLAYER_SPEED * \
-			cos(render->player->direction);
-	}
-}
-
 
 int	loop(void *param)
 {
@@ -97,7 +60,8 @@ void	event_hook(t_render *render)
 {
 	mlx_on_event(render->mlx, render->win, MLX_KEYDOWN, key_down, render);
 	mlx_on_event(render->mlx, render->win, MLX_KEYUP, key_up, render);
-	mlx_on_event(render->mlx, render->win, MLX_WINDOW_EVENT, window_event, render);
+	mlx_on_event(render->mlx, render->win, MLX_WINDOW_EVENT, \
+						window_event, render);
 }
 
 int	main(int ac, char **av)

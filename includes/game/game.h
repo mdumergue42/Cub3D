@@ -6,7 +6,7 @@
 /*   By: adjoly <adjoly@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:38:40 by adjoly            #+#    #+#             */
-/*   Updated: 2024/11/11 13:27:55 by adjoly           ###   ########.fr       */
+/*   Updated: 2024/11/11 13:49:39 by adjoly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct s_render
 int		key_down(int key, void *param);
 int		key_up(int key, void *param);
 int		window_event(int event, void *param);
+void	move_right_left(t_render *render, bool right);
+void	move_for_back(t_render *render, bool forward);
 
 /**
  *	@brief		This function is here to change the direction of the player
