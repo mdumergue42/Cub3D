@@ -1,10 +1,10 @@
 NO ./img/flo.png			rfrfr frf r f
 SO ./img/suki.png
 
-WE ./img/cahuete.png
 EA ./img/kanel.png
-C 98,55,3
+WE ./img/cahuete.png
 F 50,0,250
+C 98,55,3
 
 11111
 1000W1

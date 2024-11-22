@@ -1,10 +1,10 @@
 NO ./img/suki.png			
 SO ./img/suki2.png
 
-WE ./img/suki3.png
 EA ./img/suki4.png
-C 102,0,0
+WE ./img/suki3.png
 F 255,204,229
+C 102,0,0
 
 111111
 1110111111111
